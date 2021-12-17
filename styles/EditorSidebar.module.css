@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 30px;
+  height: 100vh;
+  background-color: #e8d288;
+  width: 18.5vw; /*change to grid later*/
+}
+/* .container {
+} */

@@ -1,15 +1,11 @@
-// import {useState} from 'react'
-// import {convertToRaw, EditorState } from 'draft-js';
-// import TextEditor from '../../../components/TextEditor';
+import EditorSidebar from "../../../components/EditorSidebar"
 function index() {
 
     return (
         <div>
-            <nav></nav>
+            <EditorSidebar/>
             <main>
-                <TextEditor
-                    
-                    />
+                
             </main>
         </div>
     )
