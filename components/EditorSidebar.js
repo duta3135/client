@@ -1,6 +1,6 @@
 import styles from '../styles/EditorSidebar.module.css'
 export default function EditorSidebar(){
-    const dummyWriters = ['kang ux', 'kang backend', 'kang frontend', 'kang devOps']
+    const dummyWriters = ['kang ux', 'kang backend', 'kang frontend', 'kang devOps', 'kang bakso']
     return(
         <div className={styles.container}>
             <form className={styles.form}>
@@ -21,6 +21,7 @@ export default function EditorSidebar(){
                     <option>Politics</option>
                 </select>
             </form>
+            
         </div>
     )
 }
