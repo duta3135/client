@@ -14,8 +14,8 @@ export default function EditorSidebar(){
                     //add key from writer id
                     <option value={writer}>{writer}</option>)}
                 </select>
-                <label>category</label>
-                <select name='writers'>
+                <label>Segments</label>
+                <select>
                     <option>Entertainment</option>
                     <option>Health</option>
                     <option>Food</option>

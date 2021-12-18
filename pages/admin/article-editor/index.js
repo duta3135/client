@@ -1,8 +1,9 @@
 import EditorSidebar from "../../../components/EditorSidebar"
-function index() {
+import styles from "../../../styles/ArticleEditor.module.css"
+function ArticleEditor() {
 
     return (
-        <div>
+        <div className={styles.wrapper}>
             <EditorSidebar/>
             <main>
                 
@@ -11,4 +12,4 @@ function index() {
     )
 }
 
-export default index
+export default ArticleEditor
