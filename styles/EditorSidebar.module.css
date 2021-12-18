@@ -1,6 +1,6 @@
 .form {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
   padding-left: 40px;
   padding-right: 40px;

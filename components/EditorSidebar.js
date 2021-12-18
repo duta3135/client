@@ -11,6 +11,7 @@ export default function EditorSidebar(){
                 <label>Writers</label>
                 <select name='writers' multiple>
                     {dummyWriters.map((writer)=>
+                    //add key from writer id
                     <option value={writer}>{writer}</option>)}
                 </select>
                 <label>category</label>
