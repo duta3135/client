@@ -1,0 +1,37 @@
+.wrapper {
+  margin-right: 40px;
+}
+.btnDown {
+  border: none;
+  border-left: solid 1px #fff;
+  border-radius: 0 5px 5px 0;
+  background-color: #5bb8f1;
+  height: 30px;
+  padding: 0 7px 0 7px;
+  position: absolute;
+}
+.mainBtn {
+  font-size: 0.75rem;
+  border-radius: 5px 0 0 5px;
+  border: none;
+  height: 30px;
+  padding: 0 20px;
+  background-color: #5bb8f1;
+  color: #fff;
+}
+.dropdownClosed {
+  display: none;
+  font-size: 0.75rem;
+  background-color: #fff;
+  padding: 7px 12px 7px 12px;
+  z-index: 1;
+  border-radius: 5px 0 0 5px;
+}
+.dropdownOpen {
+  display: flex;
+  font-size: 0.75rem;
+  background-color: #fff;
+  padding: 7px 12px 7px 12px;
+  z-index: 1;
+  border-radius: 5px 0 0 5px;
+}
