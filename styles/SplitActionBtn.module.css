@@ -1,5 +1,5 @@
 .wrapper {
-  margin-right: 40px;
+  margin: 1em 30px 1em 0;
 }
 .btnDown {
   border: none;
@@ -11,6 +11,7 @@
   position: absolute;
 }
 .mainBtn {
+  cursor: pointer;
   font-size: 0.75rem;
   border-radius: 5px 0 0 5px;
   border: none;
@@ -28,6 +29,7 @@
   border-radius: 5px 0 0 5px;
 }
 .dropdownOpen {
+  cursor: pointer;
   display: flex;
   font-size: 0.75rem;
   background-color: #fff;
