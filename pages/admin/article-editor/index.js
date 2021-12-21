@@ -6,8 +6,9 @@ function ArticleEditor() {
     return (
         <div className={styles.wrapper}>
             <EditorSidebar/>
+            <SplitActionBtn/>
             <main>
-                <SplitActionBtn/>
+                
             </main>
         </div>
     )
