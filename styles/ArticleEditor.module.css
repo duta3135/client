@@ -5,17 +5,19 @@
   font-weight: 500;
   display: grid;
   margin-right: 40px;
-  grid-template-columns: 1fr 5fr;
-  grid-template-rows: 10fr 1fr;
+  grid-template-columns: 1fr 5fr 5fr;
+  grid-template-rows: 6em 100%;
   grid-template-areas:
-    "sidebar" "header" "header"
-    "sidebar" "main" "main";
+    "sidebar header header"
+    "sidebar main main";
 }
-.wrapper main {
+.main {
   grid-area: main;
 }
-.wrapper header {
+.header {
   grid-area: header;
   display: flex;
   margin-top: 15px;
+  display: flex;
+  justify-content: flex-end;
 }

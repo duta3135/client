@@ -6,10 +6,10 @@ function ArticleEditor() {
     return (
         <div className={styles.wrapper}>
             <EditorSidebar/>
-            <header><SplitActionBtn/></header>
+            <header className={styles.header}><SplitActionBtn/></header>
             
-            <main>
-                
+            <main className={styles.main}>
+                main
             </main>
         </div>
     )
