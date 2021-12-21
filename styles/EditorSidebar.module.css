@@ -7,8 +7,8 @@
   padding-top: 1.5em;
   height: 100vh;
   background-color: #e8d288;
-  width: 18.5vw; /*change to grid later*/
   font-size: 1em;
+  position: fixed;
 }
 
 .form input,
@@ -32,6 +32,7 @@
   height: 90px;
   padding: 5px 10px 5px 3px;
   background-image: none;
+  scrollbar-width: none;
 }
 .form select::-webkit-scrollbar {
   display: none;
