@@ -1,7 +1,5 @@
-// import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
-// import React, { Component, useState, useEffect } from 'react'
-// import { Editor } from "react-draft-wysiwyg";
-// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
+import React, { Component, useState, useEffect } from 'react'
 
 export default function TextFunc(){
     // const [editorState, setEditorState] = useState(EditorState.createEmpty())
