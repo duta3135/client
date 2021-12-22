@@ -6,6 +6,7 @@
   display: grid;
   margin-right: 40px;
   grid-template-columns: 1fr 5fr 5fr;
+  column-gap: 2em;
   grid-template-rows: 6em 100%;
   grid-template-areas:
     "sidebar header header"
