@@ -2,7 +2,9 @@
 
 .RichEditorRoot {
   background: #fff;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
+  border-radius: 5px;
+  box-shadow: 0 10px 10px 5px rgba(10, 10, 10, 0.075);
   font-family: "Nunito", sans-serif;
   min-height: 500px;
   /* max-width: 75ch; */
@@ -64,4 +66,6 @@
 
 .RichEditorActiveButton {
   color: #5890ff;
+  margin-right: 16px;
+  padding: 2px 0;
 }

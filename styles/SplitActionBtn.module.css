@@ -10,6 +10,11 @@
   padding: 0 7px 0 7px;
   position: absolute;
 }
+.btnDown:hover {
+  transition: 200ms;
+  background-color: #6cc7ff;
+  outline: none;
+}
 .mainBtn {
   cursor: pointer;
   font-size: 0.75rem;
@@ -19,6 +24,11 @@
   padding: 0 20px;
   background-color: #5bb8f1;
   color: #fff;
+}
+.mainBtn:hover {
+  transition: 200ms;
+  background-color: #6cc7ff;
+  outline: none;
 }
 .dropdownClosed {
   display: none;
