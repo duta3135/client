@@ -22,6 +22,7 @@ export default function EditorSidebar(){
                     <option>Politics</option>
                 </select>
             </form>
+            
         </div>
     )
 }
