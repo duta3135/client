@@ -11,7 +11,8 @@
     "draft-js": "^0.11.7",
     "next": "^12.0.8-canary.11",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.22.3"
   },
   "devDependencies": {
     "eslint": "7.32.0",
