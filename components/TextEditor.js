@@ -61,15 +61,13 @@ class TextEditor extends React.Component {
     render() {
       const {editorState} = this.state;
 
-      // If the user changes block type before entering any text, we can
-      // either style the placeholder or hide it. Let's just hide it now.
       let className = styles.RichEditorEditor;
       var contentState = editorState.getCurrentContent();
-      if (!contentState.hasText()) {
-        if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-          className += styles.RichEditorHidePlaceholder;
-        }
-      }
+      // if (!contentState.hasText()) {
+      //   if (contentState.getBlockMap().first().getType() !== 'unstyled') {
+      //     className += styles.RichEditorHidePlaceholder;
+      //   }
+      // }
 
       return (
         <div className={styles.RichEditorRoot}>
@@ -89,7 +87,7 @@ class TextEditor extends React.Component {
               handleKeyCommand={this.handleKeyCommand}
               keyBindingFn={this.mapKeyToEditorCommand}
               onChange={this.onChange}
-              placeholder="Tell a story..."
+              // placeholder="Tell a story..."
               ref="editor"
               spellCheck={true}
             />

@@ -1,7 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&family=Nunito:wght@500&display=swap");
+
 .RichEditorRoot {
   background: #fff;
   border: 1px solid #ddd;
-  font-family: "Georgia", serif;
+  font-family: "Nunito", sans-serif;
+  min-height: 500px;
+  /* max-width: 75ch; */
   font-size: 14px;
   padding: 15px;
 }
