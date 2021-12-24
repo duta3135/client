@@ -7,15 +7,15 @@
   padding-top: 1.5em;
   overflow-y: hidden;
   height: 100000000000vh;
-  background-color: #e8d288;
-  font-size: 1em;
+  background-color: #e7ce7c;
+  font-size: 1rem;
   /* position: fixed; */
 }
 
 .form input,
 .form select {
   border: none;
-  border-radius: 10px;
+  border-radius: 7px;
   height: 2em;
   padding: 5px 10px 5px 10px;
   margin: 0.25em 0 0.5em 0;

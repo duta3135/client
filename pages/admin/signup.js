@@ -1,23 +1,29 @@
 import React from 'react'
+import styles from '../../styles/SignUp.module.css'
 import { useForm } from "react-hook-form";
 function Signup() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
-    console.log(watch("example")); // watch input value by passing the name of it
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data =>{
+        if(data.password === data.confirmPassword){
+            alert('yas')
+        }
+        else{
+            alert('naw')
+        }
+    };
     return (
-        <div>
-            hellaw
+        <div className={styles.wrapper}>
             <form onSubmit={handleSubmit(onSubmit)}>
-      {/* register your input into the hook by invoking the "register" function */}
-      <input defaultValue="test" {...register("example")} />
-      
-      {/* include validation with required or other standard HTML validation rules */}
-      <input {...register("exampleRequired", { required: true })} />
-      {/* errors will return when field validation fails  */}
-      {errors.exampleRequired && <span>This field is required</span>}
-      
-      <input type="submit" />
-    </form>
+                <label>Name</label>
+                <input type="text" {...register("name", {required: true})} />
+                <label>username</label>
+                <input type="text" {...register("username", {required: true})} />
+                <label>Password</label>
+                <input type="password"{...register("password", { required: true })} />
+                <label>Confirm Password</label>
+                <input type="password" {...register("confirmPassword", { required: true })} />
+                <button type="submit">Sign-up</button>
+            </form>
         </div>
     )
 }
