@@ -33,12 +33,13 @@
   background-position-x: 97.5%;
   background-position-y: 2px;
 }
-.form select[name] {
+.form select[name="writers"] {
   height: 90px;
   padding: 5px 10px 5px 3px;
   background-image: none;
   scrollbar-width: none;
 }
+
 .form select::-webkit-scrollbar {
   display: none;
 }
