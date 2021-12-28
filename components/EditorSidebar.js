@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 
 export default function EditorSidebar(){
     const dummyWriters = ['kang ux', 'kang backend', 'kang frontend', 'kang devOps', 'kang bakso']
+    const segments = ['Entertainment', 'Health', 'Food', 'Politics']
     const { register, handleSubmit, formState: { errors } } = useForm();
     function onSubmit(data){
         console.log(data)
@@ -20,12 +21,10 @@ export default function EditorSidebar(){
                     //add key from writer id
                     <option key={writer} value={writer}>{writer}</option>)}
                 </select>
-                <label>Segments</label>
+                <label>Segment</label>
                 <select name='segment' {...register('category', {required: true})}>
-                    <option>Entertainment</option>
-                    <option>Health</option>
-                    <option>Food</option>
-                    <option>Politics</option>
+                    {segments.map((segment)=>
+                    <option key={segment} value={segment}>{segment}</option>)}
                 </select>
                 <button type='submit'>okay</button>
             </form>
