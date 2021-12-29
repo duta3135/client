@@ -6,6 +6,7 @@ function Signup() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data =>{
         if(data.password === data.confirmPassword){
+            
             axios.post('http://localhost:3001/writers', {
                 username: data.username,
                 name: data.name,
