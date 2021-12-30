@@ -1,14 +1,7 @@
 import styles from '../styles/EditorSidebar.module.css'
 import { useForm } from "react-hook-form";
-import axios from 'axios'
-import { useEffect } from 'react';
 
-export default function EditorSidebar(){
-    useEffect(() => {
-        axios.get('http://localhost:3001/writers')
-        .then(result=>console.log(result))
-    }, [])
-    const dummyWriters = ['kang ux', 'kang backend', 'kang frontend', 'kang devOps', 'kang bakso']
+export default function EditorSidebar({writers}){
     const segments = ['Entertainment', 'Health', 'Food', 'Politics']
     const { register, handleSubmit, formState: { errors } } = useForm();
     function onSubmit(data){
@@ -23,9 +16,8 @@ export default function EditorSidebar(){
                 <input type='text' {...register('description', {required: true, maxLength:150})}/>
                 <label>Writers</label>
                 <select name='writers'{...register('writers', {required:true})} multiple>
-                    {dummyWriters.map((writer)=>
-                    //add key from writer id
-                    <option key={writer} value={writer}>{writer}</option>)}
+                    {writers.map((writer)=>(
+                    <option key={writer.id} value={writer.name}>{writer.name}</option>))}
                 </select>
                 <label>Segment</label>
                 <select name='segment' {...register('category', {required: true})}>
