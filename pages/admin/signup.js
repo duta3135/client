@@ -41,13 +41,13 @@ function Signup() {
 
                 <label>Password</label>
                 <input type="password"{...register("password", { required: true })} />
-                {errors.username && <span>*password required</span>}
+                {errors.password && <span>*password required</span>}
                 <label>Confirm Password</label>
                 <input type="password" {...register("confirmPassword", { required: true })} />
                 {passwordMatched}
                 <label>instagram url</label>
                 <input type="url" {...register("insta", { required: true })} />
-                {errors.username && <span>*url required</span>}
+                {errors.insta && <span>*url required</span>}
 
                 <button type="submit">Sign-up</button>
             </form>

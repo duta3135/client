@@ -49,3 +49,9 @@
   transition: 100ms;
   background-color: #5fc1fd;
 }
+.wrapper span {
+  font-family: "Nunito", sans-serif;
+  color: #ec043e;
+  line-height: 10px;
+  font-size: 0.9rem;
+}
