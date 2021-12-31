@@ -2,23 +2,27 @@ import React from 'react'
 import styles from '../../styles/SignUp.module.css'
 import { useForm } from "react-hook-form";
 import axios from 'axios'
+import { useRouter } from 'next/router'
 function Signup() {
     const { register, handleSubmit, formState: { errors } , getValues} = useForm();
-    const onSubmit = data =>{
+    const router = useRouter()
+    async function onSubmit(data){
         if(data.password === data.confirmPassword){
-            
-            axios.post('http://localhost:3001/writers', {
-                username: data.username,
-                name: data.name,
-                password: data.password,
-                insta: data.insta
-            })
-            .then(function (response) {
-                console.log(response);
-              })            
-              .catch(function (error) {
-                console.log(error);
-              });
+            try {
+                axios.post('http://localhost:3001/writers', {
+                    username: data.username,
+                    name: data.name,
+                    password: data.password,
+                    insta: data.insta
+                })
+                .then(
+                    localStorage.setItem("isLoggedIn", true),
+                    router.push('/admin')
+                )  
+            } catch (err) {
+                alert('failed to sign you up')
+                console.error(err)
+            }
         }
         else{
             return        
