@@ -1,16 +1,22 @@
 import dynamic from 'next/dynamic'
-import React from 'react'
-
-const NoSSRLogin = dynamic(()=> import('../../../components/pages/login'), {ssr: false})
+import React, {useEffect, useState} from 'react'
+import Login from '../../components/pages/login'
 function Index() {
-    if(localStorage.getItem("isLoggedIn")){
-    return (
-        <div>
-            hello
-        </div>
-    )}
-    else{
-        return <NoSSRLogin/>
+    const [isLoggedIn, setIsLoggedIn] = useState(true)
+    useEffect(() => {
+        if(localStorage.getItem('isLoggedin')===true){
+            setIsLoggedIn(true)
+        }
+    }, [])
+    if(isLoggedIn){
+        return (
+            <div>
+                hello
+                <pre>{JSON.stringify(window.localStorage)}</pre>
+            </div>
+        )
+    }else{
+        return <Login/>
     }
 }
 

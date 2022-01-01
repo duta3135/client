@@ -17,7 +17,7 @@ function ArticleEditor({writers}) {
         </div>
     )
 }
-export async function getStaticProps()
+export async function getServerSideProps()
 {
     try {
         const res = await axios.get('http://localhost:3001/writers')
