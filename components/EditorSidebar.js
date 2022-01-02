@@ -1,12 +1,5 @@
 import styles from '../styles/EditorSidebar.module.css'
 import { useForm } from "react-hook-form";
-function Option({data}){
-    const value = {
-        name: data.name,
-        insta: data.insta
-    }
-    return <option key={data.id} value={value}>{data.name}</option>
-}
 
 export default function EditorSidebar({writers}){
     const segments = ['Entertainment', 'Health', 'Food', 'Politics']
@@ -23,7 +16,8 @@ export default function EditorSidebar({writers}){
                 <input type='text' {...register('description', {required: true, maxLength:150})}/>
                 <label>Writers</label>
                 <select name='writers'{...register('writers', {required:true})} multiple>
-                    {writers.map((writer)=><Option key={writer.id} data={writer}/>)}
+                    {writers.map((writer)=>(
+                    <option key={writer.id} value={writer.name}>{writer.name}</option>))}
                 </select>
                 <label>Segment</label>
                 <select name='segment' {...register('category', {required: true})}>
