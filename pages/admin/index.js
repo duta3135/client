@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import Login from '../../components/pages/login'
-function Index() {
-    if(window.localStorage.isLoggedIn){
+import { parseCookies } from '../../helpers/parseCookies'
+import cookie from "cookie"
+export default function Index({data}) {
+    console.log(data)
+    if(data){
         return (
             <div>
                 hello
-                <pre>{JSON.stringify(window.localStorage)}</pre>
+                <pre>{data!==null?JSON.stringify(data):"no data"}</pre>
             </div>
         )
     }else{
@@ -13,4 +16,10 @@ function Index() {
     }
 }
 
-export default Index
+Index.getInitialProps = async ({req}) =>{
+    const data = parseCookies(req)
+
+    return {
+        data: data.user,
+    }
+}
