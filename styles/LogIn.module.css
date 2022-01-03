@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  color: #252b30;
+}
+.wrapper form {
+  display: flex;
+  flex-direction: column;
+  max-width: 75ch;
+  min-width: 400px;
+  border-radius: 10px;
+  background-color: #e7ce7c;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 1.25rem 1.25rem 1.25rem;
+}
