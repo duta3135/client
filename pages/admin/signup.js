@@ -2,9 +2,11 @@ import React from 'react'
 import styles from '../../styles/SignUp.module.css'
 import { useForm } from "react-hook-form";
 import axios from 'axios'
+import {useCookies} from "react-cookie"
 import { useRouter } from 'next/router'
 function Signup() {
     const { register, handleSubmit, formState: { errors } , getValues} = useForm();
+    const [cookie, setCookie]=useCookies(["user"])
     const router = useRouter()
     async function onSubmit(data){
         if(data.password === data.confirmPassword){
@@ -15,9 +17,13 @@ function Signup() {
                     password: data.password,
                     insta: data.insta
                 })
-                .then(
-                    localStorage.setItem("isLoggedIn", true),
-                    router.push('/admin')
+                .then(result=>{
+                    setCookie("user", JSON.stringify(result),{
+                        path: "/",
+                        sameSite: true,
+                        maxAge: parseInt(2**53 - 1)
+                    }),
+                    router.push('/admin')}
                 )  
             } catch (err) {
                 alert('failed to sign you up')
