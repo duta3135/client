@@ -15,3 +15,42 @@
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.1);
   padding: 0.75rem 1.25rem 1.25rem 1.25rem;
 }
+.wrapper input {
+  margin: 5px 0 10px 0;
+  font-family: "Nunito", sans-serif;
+  border: none;
+  border-radius: 7px;
+  height: 2em;
+  padding: 5px 10px 5px 10px;
+  margin: 0.3em 0 0.75em 0;
+  background-color: #ffffff;
+  /* box-shadow: 0 0 5px rgba(110, 110, 110, 0.03); */
+}
+.wrapper label {
+  font-family: "Lora", serif;
+  font-size: 1rem;
+}
+.wrapper input:focus {
+  outline: solid 2px #56b8f5;
+}
+.wrapper button {
+  height: 2.5em;
+  border: none;
+  border-radius: 7px;
+  background-color: #4eb7f8;
+  color: #ffff;
+  font-family: "Nunito", sans-serif;
+
+  font-weight: 500;
+  margin-top: 10px;
+}
+.wrapper button:hover {
+  transition: 100ms;
+  background-color: #5fc1fd;
+}
+.wrapper span {
+  font-family: "Nunito", sans-serif;
+  color: #ec043e;
+  line-height: 10px;
+  font-size: 0.9rem;
+}
