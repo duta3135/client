@@ -1,11 +1,25 @@
-import React from 'react'
-
-function Index() {
-    return (
-        <div>
-            
-        </div>
-    )
+import React, {useEffect, useState} from 'react'
+import Login from '../../components/pages/login'
+import { parseCookies } from '../../helpers/parseCookies'
+import cookie from "cookie"
+export default function Index({data}) {
+    console.log(data)
+    if(data){
+        return (
+            <div>
+                hello
+                <pre>{data!==null?JSON.stringify(data):"no data"}</pre>
+            </div>
+        )
+    }else{
+        return <Login/>
+    }
 }
 
-export default Index
+Index.getInitialProps = async ({req}) =>{
+    const data = parseCookies(req)
+
+    return {
+        data: data.user,
+    }
+}
