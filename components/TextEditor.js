@@ -1,10 +1,11 @@
-import { Editor, EditorState, convertToRaw, RichUtils, getDefaultKeyBinding} from 'draft-js';
+import { Editor, convertToRaw, RichUtils, getDefaultKeyBinding} from 'draft-js';
+import React, { Component, useState, useEffect } from 'react'
 import styles from '../styles/TextEditor.module.css'
 
 class TextEditor extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {editorState: EditorState.createEmpty()};
+      this.state = {editorState: this.props.EditorState.createEmpty()};
 
       this.focus = () => this.refs.editor.focus();
       this.onChange = (editorState) => this.setState({editorState});
@@ -58,16 +59,9 @@ class TextEditor extends React.Component {
     }
 
     render() {
-      // console.log(this.props)
       const {editorState} = this.state;
 
       let className = styles.RichEditorEditor;
-      var contentState = editorState.getCurrentContent();
-      // if (!contentState.hasText()) {
-      //   if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-      //     className += styles.RichEditorHidePlaceholder;
-      //   }
-      // }
 
       return (
         <div className={styles.RichEditorRoot}>
