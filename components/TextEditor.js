@@ -58,7 +58,7 @@ class TextEditor extends React.Component {
     }
 
     render() {
-      console.log(this.props)
+      // console.log(this.props)
       const {editorState} = this.state;
 
       let className = styles.RichEditorEditor;
