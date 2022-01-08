@@ -1,5 +1,4 @@
 import { Editor, EditorState, convertToRaw, RichUtils, getDefaultKeyBinding} from 'draft-js';
-import React, { Component, useState, useEffect } from 'react'
 import styles from '../styles/TextEditor.module.css'
 
 class TextEditor extends React.Component {
@@ -59,6 +58,7 @@ class TextEditor extends React.Component {
     }
 
     render() {
+      console.log(this.props)
       const {editorState} = this.state;
 
       let className = styles.RichEditorEditor;

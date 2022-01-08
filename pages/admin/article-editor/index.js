@@ -1,6 +1,7 @@
 import EditorSidebar from "../../../components/EditorSidebar"
 import styles from "../../../styles/ArticleEditor.module.css"
 import SplitActionBtn from "../../../components/SplitActionBtn"
+import { EditorState } from "draft-js"
 import dynamic from 'next/dynamic'
 import axios from 'axios'
 
