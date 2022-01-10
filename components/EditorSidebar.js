@@ -6,7 +6,6 @@ export default function EditorSidebar({writers, setFormState}){
     const { register, handleSubmit, formState: { errors } } = useForm();
     function onSubmit(data){
         setFormState(data)
-        console.log(data)
     }
     return(
         <div className={styles.container}>
