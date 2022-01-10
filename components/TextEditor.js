@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
-export default function TextFunc({setTextState}){
+export default function TextEditor({setTextState}){
     const [editorState, setEditorState] = useState(EditorState.createEmpty())
     const onEditorStateChange = (editorState) => {
         setEditorState(editorState)
