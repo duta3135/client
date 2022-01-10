@@ -16,7 +16,9 @@ function ArticleEditor({writers}) {
     return (
         <div className={styles.wrapper}>
             <EditorSidebar writers={writers} setFormState={setFormState}/>
-            <header className={styles.header}><SplitActionBtn/></header>
+            <header className={styles.header}>
+                <SplitActionBtn/>
+            </header>
             
             <main className={styles.main}>
                 <NoSSREditor setTextState={setTextEditorState}/>
