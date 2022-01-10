@@ -1,11 +1,11 @@
 import styles from '../styles/EditorSidebar.module.css'
 import { useForm } from "react-hook-form";
 
-export default function EditorSidebar({writers}){
+export default function EditorSidebar({writers, setFormState}){
     const segments = ['Entertainment', 'Health', 'Food', 'Politics']
     const { register, handleSubmit, formState: { errors } } = useForm();
     function onSubmit(data){
-        console.log(data)
+        setFormState(data)
     }
     return(
         <div className={styles.container}>

@@ -5,15 +5,22 @@
   font-weight: 500;
   display: grid;
   margin-right: 40px;
-  grid-template-columns: 1fr 5fr 5fr;
+  grid-template-columns: 1fr 5fr;
   column-gap: 2em;
   grid-template-rows: 5em 100%;
   grid-template-areas:
-    "sidebar header header"
-    "sidebar main main";
+    "sidebar header"
+    "sidebar main";
 }
 .main {
   grid-area: main;
+  display: flex;
+  background-color: #fff;
+  min-height: 80vh;
+  box-shadow: 0 10px 10px 5px rgba(10, 10, 10, 0.075);
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%;
 }
 .header {
   grid-area: header;
