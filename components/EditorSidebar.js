@@ -1,5 +1,7 @@
 import styles from '../styles/EditorSidebar.module.css'
 import { useForm } from "react-hook-form";
+import axios from 'axios'
+
 
 export default function EditorSidebar({writers, setFormState}){
     const segments = ['Entertainment', 'Health', 'Food', 'Politics']
