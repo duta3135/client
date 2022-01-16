@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const NoSSREditor = dynamic(()=> import('../../../components/TextEditor'), {ssr: false})
 function ArticleEditor({writers}) {
-    
+    const [uploadStatus, setUploadStatus] = useState({isUploaded: false, url: ''})
     const [formState, setFormState] = useState({})
     const [textEditorState, setTextEditorState] = useState({})
     useEffect(() => {
@@ -15,7 +15,11 @@ function ArticleEditor({writers}) {
     }, [textEditorState])
     return (
         <div className={styles.wrapper}>
-            <EditorSidebar writers={writers} setFormState={setFormState}/>
+            <EditorSidebar 
+                writers={writers} 
+                setFormState={setFormState} 
+                uploadStatus={uploadStatus} 
+                setUploadStatus={setUploadStatus}/>
             <header className={styles.header}>
                 <SplitActionBtn/>
             </header>

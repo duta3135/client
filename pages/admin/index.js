@@ -2,13 +2,12 @@ import React, {useEffect, useState} from 'react'
 import Login from '../../components/pages/login'
 import { parseCookies } from '../../helpers/parseCookies'
 import cookie from "cookie"
-export default function Index({data}) {
-    console.log(data)
-    if(data){
+export default function Index({cookies}) {
+    if(cookies){
         return (
             <div>
                 hello
-                <pre>{data!==null?JSON.stringify(data):"no data"}</pre>
+                <pre>{cookies!==null?JSON.stringify(cookies):"no data"}</pre>
             </div>
         )
     }else{
@@ -17,9 +16,9 @@ export default function Index({data}) {
 }
 
 Index.getInitialProps = async ({req}) =>{
-    const data = parseCookies(req)
+    const cookies = parseCookies(req)
 
     return {
-        data: data.user,
+        cookies: cookies.user,
     }
 }
