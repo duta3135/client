@@ -17,7 +17,7 @@ function ArticleEditor({writers}) {
         const document = {
             cover: uploadStatus.url,
             title: formState.title,
-            writer: formState.writers,
+            writers: formState.writers,
             description: formState.description,
             category: formState.category,
             content: textEditorState,
