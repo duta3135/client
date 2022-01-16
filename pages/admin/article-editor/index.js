@@ -4,24 +4,37 @@ import SplitActionBtn from "../../../components/SplitActionBtn"
 import { useState , useEffect} from "react"
 import dynamic from 'next/dynamic'
 import axios from 'axios'
+import { useCookies } from "react-cookie";
 
 const NoSSREditor = dynamic(()=> import('../../../components/TextEditor'), {ssr: false})
 function ArticleEditor({writers}) {
-    
+    const [cookies, setCookie] = useCookies();    
+    const [uploadStatus, setUploadStatus] = useState({isUploaded: false, url: ''})
     const [formState, setFormState] = useState({})
     const [textEditorState, setTextEditorState] = useState({})
-    useEffect(() => {
-        console.log(textEditorState)
-    }, [textEditorState])
+    async function publish(published){
+        var key = cookies.key
+        const document = {
+            cover: uploadStatus.url,
+            title: formState.title,
+            writer: formState.writers,
+            description: formState.description,
+            category: formState.category,
+            content: textEditorState,
+            published
+        }
+            console.log(key)
+        
+    }
     return (
         <div className={styles.wrapper}>
             <EditorSidebar writers={writers} setFormState={setFormState}/>
             <header className={styles.header}>
-                <SplitActionBtn/>
+                <SplitActionBtn publish={publish}/>
             </header>
             
             <main className={styles.main}>
-                <NoSSREditor setTextState={setTextEditorState}/>
+                <NoSSREditor setTextEditorState={setTextEditorState}/>
             </main>
         </div>
     )
