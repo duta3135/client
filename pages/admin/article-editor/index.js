@@ -24,7 +24,6 @@ function ArticleEditor({writers}) {
             published
         }
             console.log(document)
-        
     }
     return (
         <div className={styles.wrapper}>
