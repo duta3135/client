@@ -23,7 +23,7 @@ function ArticleEditor({writers}) {
             content: textEditorState,
             published
         }
-            console.log(key)
+            console.log(document)
         
     }
     return (
