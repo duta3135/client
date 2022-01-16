@@ -1,7 +1,4 @@
-.form {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
+.container {
   padding-left: 1.5em;
   padding-right: 1.5em;
   padding-top: 1.5em;
@@ -10,6 +7,11 @@
   background-color: #e7ce7c;
   font-size: 1rem;
   /* position: fixed; */
+}
+.form {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .form input,
@@ -59,4 +61,33 @@
   transition: 200ms;
   background-color: #6cc7ff;
   outline: none;
+}
+.imageContainer {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5em;
+}
+.imageContainer button {
+  position: absolute;
+  margin: 5px;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding-bottom: 7px;
+}
+.imageContainer img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+.inputFile input {
+  /* visibility: hidden; */
+}
+.inputFile {
+  background-color: #fff;
+  height: 8em;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 0.5em;
 }

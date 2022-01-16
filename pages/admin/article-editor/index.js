@@ -23,12 +23,15 @@ function ArticleEditor({writers}) {
             content: textEditorState,
             published
         }
-            console.log(key)
-        
+            console.log(document)
     }
     return (
         <div className={styles.wrapper}>
-            <EditorSidebar writers={writers} setFormState={setFormState}/>
+            <EditorSidebar 
+                writers={writers} 
+                setFormState={setFormState} 
+                uploadStatus={uploadStatus} 
+                setUploadStatus={setUploadStatus}/>
             <header className={styles.header}>
                 <SplitActionBtn publish={publish}/>
             </header>
