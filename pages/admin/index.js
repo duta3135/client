@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Login from '../../components/pages/login'
 import { parseCookies } from '../../helpers/parseCookies'
-import cookie from "cookie"
 export default function Index({cookies}) {
     if(cookies){
         return (

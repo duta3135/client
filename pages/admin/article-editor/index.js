@@ -11,17 +11,25 @@ function ArticleEditor({writers}) {
     const [formState, setFormState] = useState({})
     const [textEditorState, setTextEditorState] = useState({})
     async function publish(published){
-        var key = cookies.key
-        const document = {
+        try{
+            const document = {
             cover: uploadStatus.url,
             title: formState.title,
             writers: formState.writers,
             description: formState.description,
             category: formState.category,
             content: textEditorState,
-            published
+            published: published
         }
-            console.log(key)
+        axios.post("http://localhost:3001/articles", document).then(res=>{
+            console.log(res)
+        })
+        }
+        catch(err){
+            console.error(err)
+        }
+        
+        
     }
     return (
         <div className={styles.wrapper}>
