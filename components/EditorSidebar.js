@@ -33,6 +33,8 @@ export default function EditorSidebar({writers, setFormState, uploadStatus, setU
       }
       const handleFileSelect = (event) => {
         setSelectedFile(event.target.files[0])
+        const formData = new FormData()
+        formData.append("image", selectedFile);
       }
       
       const input = uploadStatus.isUploaded ?
