@@ -18,6 +18,6 @@ Index.getInitialProps = async ({req}) =>{
     const cookies = parseCookies(req)
 
     return {
-        cookies: cookies.user,
+        cookies: cookies.tcm_user,
     }
 }
