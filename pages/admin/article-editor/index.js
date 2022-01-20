@@ -49,24 +49,13 @@ function ArticleEditor({cookies, writers}) {
         </div>
     )
 }
-// export async function getServerSideProps()
-// {
-//     try {
-//         const res = await axios.get('http://localhost:3001/writers')
-//         const writers = res.data
-//         return{
-//             props: {writers}
-//         }
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }
+
 ArticleEditor.getInitialProps = async ({req}) =>{
     const cookies = parseCookies(req)
     const res = await axios.get('http://localhost:3001/writers')
     const writers = res.data
     return {
-        cookies: cookies.user,
+        cookies: cookies.tcm_user,
         writers: writers
     }
 }
