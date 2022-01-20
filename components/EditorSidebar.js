@@ -13,6 +13,7 @@ export default function EditorSidebar({writers, setFormState, uploadStatus, setU
         setFormState(data)
     }
     function resetImage(){
+        
         setUploadStatus({isUploaded:false, url: ''})
         setSelectedFile(null)
     }
@@ -22,7 +23,7 @@ export default function EditorSidebar({writers, setFormState, uploadStatus, setU
         formData.append("image", selectedFile);
         if(formData){
             try {
-          axios.post('http://localhost:3001/images', formData).then(res=>setUploadStatus({isUploaded:true, url: res.data.url}))
+          axios.post('http://localhost:3001/images', formData).then(res=>setUploadStatus({isUploaded:true, url: res.data.message.url}))
         } catch (err) {
           console.log(err)
         }
@@ -33,8 +34,6 @@ export default function EditorSidebar({writers, setFormState, uploadStatus, setU
       }
       const handleFileSelect = (event) => {
         setSelectedFile(event.target.files[0])
-        const formData = new FormData()
-        formData.append("image", selectedFile);
       }
       
       const input = uploadStatus.isUploaded ?

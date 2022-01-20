@@ -8,7 +8,6 @@ import { parseCookies } from '../../../helpers/parseCookies'
 
 const NoSSREditor = dynamic(()=> import('../../../components/TextEditor'), {ssr: false})
 function ArticleEditor({cookies, writers}) {
-    console.log(cookies)
     const [uploadStatus, setUploadStatus] = useState({isUploaded: false, url: ''})
     const [formState, setFormState] = useState({})
     const [textEditorState, setTextEditorState] = useState({})
