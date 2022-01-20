@@ -12,10 +12,17 @@ export default function EditorSidebar({writers, setFormState, uploadStatus, setU
     function onSubmit(data){
         setFormState(data)
     }
-    function resetImage(){
-        
-        setUploadStatus({isUploaded:false, url: ''})
-        setSelectedFile(null)
+    function resetImage(imageId){
+        try {
+            axios.delete(`http://localhost:3001/images/${imageId}`).then(
+                setUploadStatus({isUploaded:false, url: '', id: ''})
+            ).then(
+                setSelectedFile(null)
+            )
+        } catch (err) {
+          console.error(err)
+            
+        }
     }
     function onFileUpload (e){
         e.preventDefault()
@@ -23,9 +30,9 @@ export default function EditorSidebar({writers, setFormState, uploadStatus, setU
         formData.append("image", selectedFile);
         if(formData){
             try {
-          axios.post('http://localhost:3001/images', formData).then(res=>setUploadStatus({isUploaded:true, url: res.data.message.url}))
+          axios.post('http://localhost:3001/images', formData).then(res=>setUploadStatus({isUploaded:true, url: res.data.message.url, id: res.data.id}))
         } catch (err) {
-          console.log(err)
+          console.error(err)
         }
         }else{
             return
@@ -38,7 +45,7 @@ export default function EditorSidebar({writers, setFormState, uploadStatus, setU
       
       const input = uploadStatus.isUploaded ?
         <div className={styles.imageContainer}>
-            <button onClick={()=>resetImage()}>x</button>
+            <button onClick={()=>resetImage(uploadStatus.id)}>x</button>
             <img className='image' src={uploadStatus.url} ></img>
         </div> 
          :
