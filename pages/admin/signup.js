@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../../styles/SignUp.module.css'
 import { useForm } from "react-hook-form";
 import axios from 'axios'
+import Head from "next/head"
 import {useCookies} from "react-cookie"
 import { useRouter } from 'next/router'
 function Signup() {
@@ -37,6 +38,9 @@ function Signup() {
     const passwordMatched = getValues().password === getValues().confirmPassword ? <span></span> : <span>passwords dont match</span>
     return (
         <div className={styles.wrapper}>
+            <Head>
+                <title>Sign-Up</title>
+            </Head>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>Name</label>
                 <input type="text" placeholder='bejo'{...register("name", {required: true})} />

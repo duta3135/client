@@ -4,6 +4,8 @@ import SplitActionBtn from "../../../components/SplitActionBtn"
 import { useState , useEffect} from "react"
 import dynamic from 'next/dynamic'
 import axios from 'axios'
+import Head from "next/head"
+
 import { parseCookies } from '../../../helpers/parseCookies'
 
 const NoSSREditor = dynamic(()=> import('../../../components/TextEditor'), {ssr: false})
@@ -34,6 +36,9 @@ function ArticleEditor({cookies, writers}) {
     }
     return (
         <div className={styles.wrapper}>
+            <Head>
+                <title>Article Editor</title>
+            </Head>
             <EditorSidebar 
                 writers={writers} 
                 setFormState={setFormState} 

@@ -1,6 +1,8 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
+import Head from "next/head"
+
 import styles from '../../styles/LogIn.module.css'
 function Login() {
     const { register, handleSubmit, formState: { errors } , getValues} = useForm();
@@ -10,6 +12,9 @@ function Login() {
     }
     return (
         <div className={styles.wrapper}>
+            <Head>
+                <title>Log-in</title>
+            </Head>
             <form onSubmit={handleSubmit(authenticate)}>
                 <label>Username</label>
                 <input placeholder="johndoe95" type="text" {...register("username", {required:true})}/>
