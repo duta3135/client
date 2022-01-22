@@ -13,7 +13,7 @@
   border-radius: 10px;
   background-color: #e7ce7c;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.1);
-  padding: 0.75rem 1.25rem 1.25rem 1.25rem;
+  padding: 0.75rem 1.25rem 1rem 1.25rem;
 }
 .wrapper input {
   margin: 5px 0 10px 0;
@@ -53,4 +53,13 @@
   color: #ec043e;
   line-height: 10px;
   font-size: 0.9rem;
+}
+.wrapper div {
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+
+  margin-top: 10px;
+}
+.wrapper a {
+  color: #3baaf0;
 }

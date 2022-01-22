@@ -2,6 +2,7 @@ import React from 'react'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import Head from "next/head"
+import Link from "next/link"
 
 import styles from '../../styles/LogIn.module.css'
 function Login() {
@@ -21,6 +22,9 @@ function Login() {
                 <label>Password</label>
                 <input type="password" {...register("password", {required:true})}/>
                 <button type='submit'>Log in</button>
+                <div>
+                    Don't have an account? <Link href='/admin/signup'>Sign-up</Link>
+                </div>
             </form> 
         </div>
     )

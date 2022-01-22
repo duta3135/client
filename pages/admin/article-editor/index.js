@@ -4,6 +4,7 @@ import SplitActionBtn from "../../../components/SplitActionBtn"
 import { useState , useEffect} from "react"
 import dynamic from 'next/dynamic'
 import axios from 'axios'
+import Login from '../../../components/pages/login'
 import Head from "next/head"
 
 import { parseCookies } from '../../../helpers/parseCookies'
@@ -34,25 +35,32 @@ function ArticleEditor({cookies, writers}) {
         
         
     }
-    return (
-        <div className={styles.wrapper}>
-            <Head>
-                <title>Article Editor</title>
-            </Head>
-            <EditorSidebar 
-                writers={writers} 
-                setFormState={setFormState} 
-                uploadStatus={uploadStatus} 
-                setUploadStatus={setUploadStatus}/>
-            <header className={styles.header}>
-                <SplitActionBtn publish={publish}/>
-            </header>
-            
-            <main className={styles.main}>
-                <NoSSREditor setTextEditorState={setTextEditorState}/>
-            </main>
-        </div>
-    )
+    if(cookies){
+        return (
+            <div className={styles.wrapper}>
+                <Head>
+                    <title>Article Editor</title>
+                </Head>
+                <EditorSidebar 
+                    writers={writers} 
+                    setFormState={setFormState} 
+                    uploadStatus={uploadStatus} 
+                    setUploadStatus={setUploadStatus}/>
+                <header className={styles.header}>
+                    <SplitActionBtn publish={publish}/>
+                </header>
+                
+                <main className={styles.main}>
+                    <NoSSREditor setTextEditorState={setTextEditorState}/>
+                </main>
+            </div>
+        )
+    }
+    else{
+        return(
+            <Login/>
+        )
+    }
 }
 
 ArticleEditor.getInitialProps = async ({req}) =>{

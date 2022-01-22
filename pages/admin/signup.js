@@ -3,6 +3,7 @@ import styles from '../../styles/SignUp.module.css'
 import { useForm } from "react-hook-form";
 import axios from 'axios'
 import Head from "next/head"
+import Link from 'next/link'
 import {useCookies} from "react-cookie"
 import { useRouter } from 'next/router'
 function Signup() {
@@ -60,6 +61,9 @@ function Signup() {
                 {errors.insta && <span>*url required</span>}
 
                 <button type="submit">Sign-up</button>
+                <div>
+                    Already have an account? <Link href='/admin'>Log-in</Link>
+                </div>
             </form>
         </div>
     )
