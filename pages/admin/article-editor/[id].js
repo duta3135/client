@@ -11,13 +11,12 @@ import { parseCookies } from '../../../helpers/parseCookies'
 
 const NoSSREditor = dynamic(()=> import('../../../components/TextEditor'), {ssr: false})
 function ArticleEditor({cookies, writers, article}) {
-    console.log(article)
-    const [uploadStatus, setUploadStatus] = useState({isUploaded: false, url: '', id: ''})
+    const [uploadStatus, setUploadStatus] = useState({isUploaded: true, url: article.cover, id: ''})
     const [formState, setFormState] = useState({
-        title: '',
-        writers: [],
-        description: '',
-        category: ''
+        title: article.title,
+        writers: article.writers,
+        description: article.description,
+        category: article.category
     })
     const [textEditorState, setTextEditorState] = useState({})
     async function publish(published){
@@ -58,7 +57,7 @@ function ArticleEditor({cookies, writers, article}) {
                 </header>
                 
                 <main className={styles.main}>
-                    <NoSSREditor setTextEditorState={setTextEditorState}/>
+                    <NoSSREditor setTextEditorState={setTextEditorState} initialState={article.content}/>
                 </main>
             </div>
         )

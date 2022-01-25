@@ -52,7 +52,7 @@ export default function EditorSidebar({writers, setFormState, formState, uploadS
         </div> 
          :
         <div className={styles.inputFile}>
-            <input onChange={handleFileSelect} type="file"></input>
+            <input onChange={handleFileSelect} type="file"/>
             <button type="submit">upload</button>
         </div>
     return(

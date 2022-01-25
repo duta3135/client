@@ -27,9 +27,10 @@ function ArticleEditor({cookies, writers}) {
             writers: formState.writers,
             description: formState.description,
             category: formState.category,
-            content: textEditorState,
+            content: JSON.stringify(textEditorState),
             published: published
         }
+        // console.log(document)
         axios.post("http://localhost:3001/articles", document).then(res=>{
             console.log(res)
         })
