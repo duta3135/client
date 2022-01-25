@@ -12,7 +12,12 @@ import { parseCookies } from '../../../helpers/parseCookies'
 const NoSSREditor = dynamic(()=> import('../../../components/TextEditor'), {ssr: false})
 function ArticleEditor({cookies, writers}) {
     const [uploadStatus, setUploadStatus] = useState({isUploaded: false, url: '', id: ''})
-    const [formState, setFormState] = useState({})
+    const [formState, setFormState] = useState({
+        title: '',
+        writers: [],
+        description: '',
+        category: ''
+    })
     const [textEditorState, setTextEditorState] = useState({})
     async function publish(published){
         try{
@@ -22,9 +27,10 @@ function ArticleEditor({cookies, writers}) {
             writers: formState.writers,
             description: formState.description,
             category: formState.category,
-            content: textEditorState,
+            content: JSON.stringify(textEditorState),
             published: published
         }
+        // console.log(document)
         axios.post("http://localhost:3001/articles", document).then(res=>{
             console.log(res)
         })
@@ -44,6 +50,7 @@ function ArticleEditor({cookies, writers}) {
                 <EditorSidebar 
                     writers={writers} 
                     setFormState={setFormState} 
+                    formState={formState}
                     uploadStatus={uploadStatus} 
                     setUploadStatus={setUploadStatus}/>
                 <header className={styles.header}>

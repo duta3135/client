@@ -4,9 +4,11 @@ import axios from 'axios'
 import {useState} from 'react'
 
 
-export default function EditorSidebar({writers, setFormState, uploadStatus, setUploadStatus}){
+export default function EditorSidebar({writers, setFormState, formState, uploadStatus, setUploadStatus}){
     const segments = ['Entertainment', 'Health', 'Food', 'Politics']
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        defaultValues: formState
+    });
     const [selectedFile, setSelectedFile] = useState(null);
 
     function onSubmit(data){
@@ -50,7 +52,7 @@ export default function EditorSidebar({writers, setFormState, uploadStatus, setU
         </div> 
          :
         <div className={styles.inputFile}>
-            <input onChange={handleFileSelect} type="file"></input>
+            <input onChange={handleFileSelect} type="file"/>
             <button type="submit">upload</button>
         </div>
     return(
