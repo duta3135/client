@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&family=Nunito&display=swap");
+
+.container {
+  text-align: center;
+}
+.container article {
+  font-family: "Nunito", sans-serif;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 10px 5px rgba(10, 10, 10, 0.075);
+  max-width: 75ch;
+  text-align: left;
+  padding: 15px;
+  margin: 0 auto;
+}
