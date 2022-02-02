@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Login from '../../components/pages/login'
 import { parseCookies } from '../../helpers/parseCookies'
 import Head from "next/head"
+import AdminLayout from '../../components/AdminLayout'
 
 export default function Index({cookies}) {
     if(cookies){
@@ -10,8 +11,9 @@ export default function Index({cookies}) {
                 <Head>
                     <title>Admin Page</title>
                 </Head>
-                hello
-                <pre>{cookies!==null?JSON.stringify(cookies):"no data"}</pre>
+                <AdminLayout>
+                    
+                </AdminLayout>
             </div>
         )
     }else{
