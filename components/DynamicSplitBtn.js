@@ -21,7 +21,7 @@ export default function DynamicSplitBtn(props) {
     } else {
         return(
             <div>
-                <button onClick={()=>console.log('update site')}>Update site</button>
+                <button onClick={()=>props.update(true)}>Update site</button>
             </div>
         )
     }
