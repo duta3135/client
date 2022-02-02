@@ -36,7 +36,7 @@ function ArticleEditor({cookies, writers}) {
         })
         }
         catch(err){
-            console.error(err)
+            alert(err)
         }
         
         

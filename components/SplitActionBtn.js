@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import styles from '../styles/SplitActionBtn.module.css'
-function SplitActionBtn({publish}) {
+function SplitActionBtn({publish, editorStatus}) {
     const [dropdown, setDropdown] = useState(false)
     const dropdownStyle = dropdown ? styles.dropdownOpen : styles.dropdownClosed
     const changeDropDown = () => {{

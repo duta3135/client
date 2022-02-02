@@ -1,7 +1,7 @@
 import EditorSidebar from "../../../components/EditorSidebar"
 import styles from "../../../styles/ArticleEditor.module.css"
-import SplitActionBtn from "../../../components/SplitActionBtn"
-import { useState , useEffect} from "react"
+import DynamicSplitBtn from "../../../components/DynamicSplitBtn"
+import { useState} from "react"
 import dynamic from 'next/dynamic'
 import axios from 'axios'
 import Login from '../../../components/pages/login'
@@ -27,7 +27,7 @@ function ArticleEditor({cookies, writers, article}) {
             writers: formState.writers,
             description: formState.description,
             category: formState.category,
-            content: textEditorState,
+            content: JSON.stringify(textEditorState),
             published: published
         }
         axios.post("http://localhost:3001/articles", document).then(res=>{
@@ -37,8 +37,23 @@ function ArticleEditor({cookies, writers, article}) {
         catch(err){
             console.error(err)
         }
-        
-        
+    }
+    async function update(published){
+        try{
+            const document = {
+                cover: uploadStatus.url,
+                title: formState.title,
+                writers: formState.writers,
+                description: formState.description,
+                category: formState.category,
+                content: JSON.stringify(textEditorState),
+                published: published
+            }
+            axios.patch(`http://localhost:3001/articles/${article._id}`, document)
+        }
+        catch(err){
+            alert(err)
+        }
     }
     if(cookies){
         return (
@@ -53,7 +68,7 @@ function ArticleEditor({cookies, writers, article}) {
                     uploadStatus={uploadStatus} 
                     setUploadStatus={setUploadStatus}/>
                 <header className={styles.header}>
-                    <SplitActionBtn publish={publish}/>
+                    <DynamicSplitBtn isPublished={article.published} publish={publish} update={update}/>
                 </header>
                 
                 <main className={styles.main}>
