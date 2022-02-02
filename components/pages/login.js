@@ -3,13 +3,33 @@ import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import Head from "next/head"
 import Link from "next/link"
+import {useCookies} from "react-cookie"
+import { useRouter } from 'next/router'
 
 import styles from '../../styles/LogIn.module.css'
 function Login() {
     const { register, handleSubmit, formState: { errors } , getValues} = useForm();
+    const [cookie, setCookie]=useCookies(["user"])
+    const router = useRouter()
+
     async function authenticate(data){
-        axios.get(`http://localhost:3001/writers/${data.username}`)
-        .then(res=> console.log(res))
+        axios.post(`http://localhost:3001/verify`, {
+            username: data.username,
+            password: data.password
+        })
+        .then(res=> {
+            if(res.data.isVerified){
+                setCookie("tcm_user", JSON.stringify(data.username),{
+                    path: "/",
+                    sameSite: true,
+                    maxAge: parseInt(2**53 - 1)
+                })
+                router.reload()
+            }
+            else{
+                alert('login failed')
+            }
+        })
     }
     return (
         <div className={styles.wrapper}>
