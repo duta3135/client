@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&family=Nunito&display=swap");
+
+.wrapper {
+  display: flex;
+  background-color: #e8d288;
+  height: 80px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.wrapper img {
+  height: 100%;
+  border-radius: 5px;
+}
+.wrapper h3 {
+  margin: 15px 0 5px 0;
+  font-family: "Lora", serif;
+}
+.wrapper span h4 {
+  margin: 0;
+}
+.wrapper span {
+  margin-left: 20px;
+  margin-right: auto;
+  font-family: "Nunito", sans-serif;
+}

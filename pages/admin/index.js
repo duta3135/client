@@ -3,6 +3,7 @@ import Login from '../../components/pages/login'
 import { parseCookies } from '../../helpers/parseCookies'
 import Head from "next/head"
 import AdminLayout from '../../components/AdminLayout'
+import styles from '../../styles/Admin.module.css'
 import axios from 'axios'
 import AdminArticleCard from '../../components/AdminArticleCard'
 
@@ -14,8 +15,8 @@ export default function Index({cookies, articles}) {
                     <title>Admin Page</title>
                 </Head>
                 <AdminLayout>
-                    <h1>Articles</h1>
-                    <main>
+                    <main className={styles.main}>
+                        <h1>Articles</h1>
                         {articles.map((article)=>(<AdminArticleCard article={article}/>))}
                     </main>
                 </AdminLayout>
@@ -28,7 +29,7 @@ export default function Index({cookies, articles}) {
 
 Index.getInitialProps = async ({req}) =>{
     const cookies = parseCookies(req)
-    const res = await axios.get('http://localhost:3001/articles?published=true')
+    const res = await axios.get('http://localhost:3001/articles')
     return {
         cookies: cookies.tcm_user,
         articles: res.data
