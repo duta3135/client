@@ -8,10 +8,12 @@ import Login from '../../../components/pages/login'
 import Head from "next/head"
 
 import { parseCookies } from '../../../helpers/parseCookies'
+import Modal from "../../../components/Modal"
 
 const NoSSREditor = dynamic(()=> import('../../../components/TextEditor'), {ssr: false})
 function ArticleEditor({cookies, writers}) {
     const [uploadStatus, setUploadStatus] = useState({isUploaded: false, url: '', id: ''})
+    const [showModal, setShowModal] = useState(false);
     const [formState, setFormState] = useState({
         title: '',
         writers: [],
@@ -54,12 +56,14 @@ function ArticleEditor({cookies, writers}) {
                     uploadStatus={uploadStatus} 
                     setUploadStatus={setUploadStatus}/>
                 <header className={styles.header}>
+                    <button onClick={()=>setShowModal(true)}>show modal</button>
                     <SplitActionBtn publish={publish}/>
                 </header>
                 
                 <main className={styles.main}>
                     <NoSSREditor setTextEditorState={setTextEditorState}/>
                 </main>
+                <Modal show={showModal} onClose={()=>setShowModal(false)}/>
             </div>
         )
     }
