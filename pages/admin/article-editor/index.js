@@ -56,14 +56,21 @@ function ArticleEditor({cookies, writers}) {
                     uploadStatus={uploadStatus} 
                     setUploadStatus={setUploadStatus}/>
                 <header className={styles.header}>
-                    <button onClick={()=>setShowModal(true)}>show modal</button>
+                    <button onClick={()=>setShowModal(!showModal)}>show modal</button>
                     <SplitActionBtn publish={publish}/>
                 </header>
                 
                 <main className={styles.main}>
                     <NoSSREditor setTextEditorState={setTextEditorState}/>
                 </main>
-                <Modal show={showModal} onClose={()=>setShowModal(false)}/>
+                <Modal show={showModal}>
+                    <h1>hello</h1> 
+                    <div>
+                        <button onClick={()=>setShowModal(!showModal)}>naw</button>
+                        <button>yesh</button>
+                    </div>
+
+                </Modal>
             </div>
         )
     }
