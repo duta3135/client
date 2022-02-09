@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import styles from '../styles/Modal.module.css'
 
-const Portal= ({ children , show}) => {
+const Portal= ({text, mainAction,show , setModalState}) => {
    const [mounted, setMounted] = useState(false)
 
    useEffect(() => {
@@ -18,7 +18,15 @@ const Portal= ({ children , show}) => {
    const element = show?(
       <div className={styles.overlay}>
          <div className={styles.modal}>
-            {children}
+            <h1>hello</h1> 
+               <div>
+                  <button onClick={()=>setModalState({
+                     text: text,
+                     mainAction: mainAction,
+                     show: !show
+                  })}>naw</button>
+                  <button onClick={()=>mainAction()}>yesh</button>
+               </div>
          </div>
       </div>):null
    return mounted
