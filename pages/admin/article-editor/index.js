@@ -6,13 +6,14 @@ import dynamic from 'next/dynamic'
 import axios from 'axios'
 import Login from '../../../components/pages/login'
 import Head from "next/head"
-
+import { useRouter } from 'next/router'
 import { parseCookies } from '../../../helpers/parseCookies'
 import Modal from "../../../components/Modal"
 
 const NoSSREditor = dynamic(()=> import('../../../components/TextEditor'), {ssr: false})
 function ArticleEditor({cookies, writers}) {
     const [uploadStatus, setUploadStatus] = useState({isUploaded: false, url: '', id: ''})
+    const router = useRouter()
     const [modalState, setModalState] = useState({
         text: '',
         mainAction: console.log(),
@@ -38,7 +39,8 @@ function ArticleEditor({cookies, writers}) {
         }
         // console.log(document)
         axios.post("http://localhost:3001/articles", document).then(res=>{
-            alert(res.data.message)
+            router.push(`/articles/${res.data.id}`)
+
         })
         }
         catch(err){
