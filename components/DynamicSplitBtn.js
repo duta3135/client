@@ -21,7 +21,11 @@ export default function DynamicSplitBtn(props) {
     } else {
         return(
             <div>
-                <button onClick={()=>props.update(true)}>Update site</button>
+                <button onClick={()=>props.setModalState({
+                    text: `Update ${props.title}?`,
+                    mainAction: ()=>props.update(true),
+                    show: true
+                })}>Update site</button>
             </div>
         )
     }

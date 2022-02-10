@@ -40,7 +40,7 @@ function ArticleEditor({cookies, writers}) {
         // console.log(document)
         axios.post("http://localhost:3001/articles", document).then(res=>{
             setModalState({
-                text: router.route,
+                text: "posted",
                 mainAction: ()=>{setModalState({
                     text: '',
                     mainAction: ()=>{},

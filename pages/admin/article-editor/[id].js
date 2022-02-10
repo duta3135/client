@@ -3,7 +3,10 @@ import styles from "../../../styles/ArticleEditor.module.css"
 import DynamicSplitBtn from "../../../components/DynamicSplitBtn"
 import { useState} from "react"
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
+
 import axios from 'axios'
+import Modal from "../../../components/Modal"
 import Login from '../../../components/pages/login'
 import Head from "next/head"
 
@@ -12,6 +15,13 @@ import { parseCookies } from '../../../helpers/parseCookies'
 const NoSSREditor = dynamic(()=> import('../../../components/TextEditor'), {ssr: false})
 function ArticleEditor({cookies, writers, article}) {
     const [uploadStatus, setUploadStatus] = useState({isUploaded: true, url: article.cover, id: ''})
+    const router = useRouter()
+
+    const [modalState, setModalState] = useState({
+        text: '',
+        mainAction: console.log(),
+        show: false
+    });
     const [formState, setFormState] = useState({
         title: article.title,
         writers: article.writers,
@@ -20,6 +30,7 @@ function ArticleEditor({cookies, writers, article}) {
     })
     const [textEditorState, setTextEditorState] = useState({})
     async function publish(published){
+
         try{
             const document = {
             cover: uploadStatus.url,
@@ -31,7 +42,17 @@ function ArticleEditor({cookies, writers, article}) {
             published: published
         }
         axios.post("http://localhost:3001/articles", document).then(res=>{
-            console.log(res)
+            setModalState({
+                text: "posted",
+                mainAction: ()=>{setModalState({
+                    text: '',
+                    mainAction: ()=>{},
+                    show: false
+                })
+                router.push('/admin')
+            },
+                show: true
+             })
         })
         }
         catch(err){
@@ -39,6 +60,8 @@ function ArticleEditor({cookies, writers, article}) {
         }
     }
     async function update(published){
+        if(article.content==JSON.stringify(textEditorState)) {alert('no changes made')}
+        else{
         try{
             const document = {
                 cover: uploadStatus.url,
@@ -50,10 +73,23 @@ function ArticleEditor({cookies, writers, article}) {
                 published: published
             }
             axios.patch(`http://localhost:3001/articles/${article._id}`, document)
+            .then(res=>{
+                setModalState({
+                    text: "updated",
+                    mainAction: ()=>{setModalState({
+                        text: '',
+                        mainAction: ()=>{},
+                        show: false
+                    })
+                    router.push('/admin')
+                },
+                    show: true
+                 })
+            })
         }
         catch(err){
             alert(err)
-        }
+        }}
     }
     if(cookies){
         return (
@@ -68,12 +104,14 @@ function ArticleEditor({cookies, writers, article}) {
                     uploadStatus={uploadStatus} 
                     setUploadStatus={setUploadStatus}/>
                 <header className={styles.header}>
-                    <DynamicSplitBtn isPublished={article.published} publish={publish} update={update}/>
+                    <DynamicSplitBtn isPublished={article.published} publish={publish} update={update} setModalState={setModalState} title={formState.title}/>
                 </header>
                 
                 <main className={styles.main}>
                     <NoSSREditor setTextEditorState={setTextEditorState} initialState={article.content}/>
                 </main>
+                <Modal text={modalState.text} mainAction={modalState.mainAction} show={modalState.show} setModalState={setModalState}/>
+
             </div>
         )
     }
