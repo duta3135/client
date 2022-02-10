@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora&family=Nunito&display=swap");
 
 .container main {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   padding: 40px 80px 40px 80px;
 }
 .container header {
