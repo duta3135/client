@@ -2,6 +2,7 @@
 
 .container {
   text-align: center;
+  padding: 0 80px 0 80px;
 }
 .container article {
   font-family: "Nunito", sans-serif;
@@ -11,5 +12,9 @@
   max-width: 75ch;
   text-align: left;
   padding: 15px;
-  margin: 0 auto;
+  margin: 0 auto 3em auto;
+}
+.container section {
+  display: flex;
+  justify-content: center;
 }

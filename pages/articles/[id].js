@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React , {useState} from 'react';
+import ArticleCard from '../../components/ArticleCard';
 import Head from 'next/head';
 import {Editor, EditorState, convertFromRaw} from 'draft-js';
 import { useRouter } from 'next/router'
 import styles from '../../styles/DynamicArticle.module.css'
 import { route } from 'next/dist/server/router';
 
-function DynamicArticle({article}) {
+function DynamicArticle({article, articleRecs}) {
     const {_id, category, title, description, writers, content, cover, published} = article
     const convertedState = convertFromRaw(JSON.parse(content))
     const router = useRouter()
@@ -39,6 +40,10 @@ function DynamicArticle({article}) {
                     readOnly={true}
                 />
             </article>
+                <h2>Articles you might like</h2>
+            <section>
+                {articleRecs.map((article)=><ArticleCard props={article}/>)}
+            </section>
         </div>
     )
 }
@@ -55,7 +60,10 @@ export async function getStaticPaths(){
 export async function getStaticProps({params}){
     const res = await axios.get(`http://localhost:3001/articles/${params.id}`)
     const article = res.data
+    const recommendationArticles = await axios.get(`http://localhost:3001/articles?published=true&limit=4&exclude=${article._id}&category=${article.category}`)
+    const articleRecs = recommendationArticles.data
+
     return{
-        props: {article}
+        props: {article, articleRecs}
     }
 }
