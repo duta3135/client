@@ -17,7 +17,7 @@ function ArticleEditor({cookies, writers}) {
     const [modalState, setModalState] = useState({
         text: '',
         mainAction: console.log(),
-        show: true
+        show: false
     });
     const [formState, setFormState] = useState({
         title: '',
@@ -39,8 +39,17 @@ function ArticleEditor({cookies, writers}) {
         }
         // console.log(document)
         axios.post("http://localhost:3001/articles", document).then(res=>{
-            router.push(`/articles/${res.data.id}`)
-
+            setModalState({
+                text: router.route,
+                mainAction: ()=>{setModalState({
+                    text: '',
+                    mainAction: ()=>{},
+                    show: false
+                })
+                router.push('/admin')
+            },
+                show: true
+             })
         })
         }
         catch(err){
