@@ -1,8 +1,10 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import axios from 'axios'
+import ArticleCard from '../components/ArticleCard'
+import Link from 'next/link'
 
-export default function Home() {
+export default function Home({articles, newestArticle}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -10,60 +12,47 @@ export default function Home() {
         <meta name="description" content="a youth-run journalism NGO dedicated to the pursuit of the student voice established in 2020" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <header>
+        <h3>The Curious Mind</h3>
+        <button>Contact us</button>
+      </header>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <section className={styles.hero}>
+          <Link href={`/articles/${newestArticle[0]._id}`}>
+            <div className={styles.newestArticle}>
+              <img src={newestArticle[0].cover}/>
+              <h2>{newestArticle[0].title}</h2>
+              <p>{newestArticle[0].description}</p>
+              <p>written by {newestArticle[0].writers}</p>
+            </div>
+          </Link>
+            <div className={styles.heroText}>
+              <h1>A gateway to a world of curiosity</h1>
+              <p>a youth-run journalism NGO dedicated to the pursuit of the student voice established in 2020</p>
+              <a href='linktree'>
+              </a>
+              <button>More About Us</button>
+            </div>
+        </section>
+        <section className={styles.articles}>
+          <h1>Our Articles</h1>
+          <div className={styles.articleContainer}>
+            {articles.map(article=><ArticleCard props={article}/>)}
+          </div>
+          <Link href='/articles'><button>See more articles</button></Link>
+        </section>
+        <section className={styles.podcast}></section>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   )
+}
+export async function getStaticProps(){
+  const articles = await axios.get('http://localhost:3001/articles?published=true&limit=4')
+  const newestArticle= await axios.get('http://localhost:3001/articles?published=true&limit=1')
+  return{
+    props:{
+      articles: articles.data,
+      newestArticle: newestArticle.data
+    }
+  }
 }
