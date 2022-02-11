@@ -29,7 +29,9 @@ export default function Home({articles, newestArticle}) {
             <div className={styles.heroText}>
               <h1>A gateway to a world of curiosity</h1>
               <p>a youth-run journalism NGO dedicated to the pursuit of the student voice established in 2020</p>
-              <button>CTA</button>
+              <a href='linktree'>
+              </a>
+              <button>More About Us</button>
             </div>
         </section>
         <section className={styles.articles}>
