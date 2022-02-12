@@ -41,7 +41,7 @@ function ArticleEditor({cookies, writers, article}) {
             content: JSON.stringify(textEditorState),
             published: published
         }
-        axios.post("http://localhost:3001/articles", document).then(res=>{
+        axios.post(`${process.env.API_URL}/articles`, document).then(res=>{
             setModalState({
                 text: "posted",
                 mainAction: ()=>{setModalState({
@@ -72,7 +72,7 @@ function ArticleEditor({cookies, writers, article}) {
                 content: JSON.stringify(textEditorState),
                 published: published
             }
-            axios.patch(`http://localhost:3001/articles/${article._id}`, document)
+            axios.patch(`${process.env.API_URL}/articles/${article._id}`, document)
             .then(res=>{
                 setModalState({
                     text: "updated",
@@ -125,8 +125,8 @@ function ArticleEditor({cookies, writers, article}) {
 
 ArticleEditor.getInitialProps = async ({req, query}) =>{
     const cookies = parseCookies(req)
-    const res = await axios.get('http://localhost:3001/writers')
-    const fetchArticle = await axios.get(`http://localhost:3001/articles/${query.id}`)
+    const res = await axios.get(`${process.env.API_URL}/writers`)
+    const fetchArticle = await axios.get(`${process.env.API_URL}/articles/${query.id}`)
     const writers = res.data
     return {
         cookies: cookies.tcm_user,

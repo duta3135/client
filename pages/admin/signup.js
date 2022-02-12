@@ -13,7 +13,7 @@ function Signup() {
     async function onSubmit(data){
         if(data.password === data.confirmPassword){
             try {
-                axios.post('http://localhost:3001/writers', {
+                axios.post(`${process.env.API_URL}/writers`, {
                     username: data.username,
                     name: data.name,
                     password: data.password,

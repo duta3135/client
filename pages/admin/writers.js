@@ -30,7 +30,7 @@ export default function Index({cookies, writers}) {
 
 Index.getInitialProps = async ({req}) =>{
     const cookies = parseCookies(req)
-    const res = await axios.get('http://localhost:3001/writers')
+    const res = await axios.get(`${process.env.API_URL}/writers`)
     return {
         cookies: cookies.tcm_user,
         writers: res.data

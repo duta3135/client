@@ -50,7 +50,7 @@ function DynamicArticle({article, articleRecs}) {
 
 export default DynamicArticle;
 export async function getStaticPaths(){
-    const res = await axios.get('http://localhost:3001/articles?published=true')
+    const res = await axios.get(`${process.env.API_URL}/articles?published=true`)
     const articles = res.data
     const paths = articles.map((article)=>({
         params: {id: article._id}
@@ -58,9 +58,9 @@ export async function getStaticPaths(){
     return{paths, fallback: true}
 }
 export async function getStaticProps({params}){
-    const res = await axios.get(`http://localhost:3001/articles/${params.id}`)
+    const res = await axios.get(`${process.env.API_URL}/articles/${params.id}`)
     const article = res.data
-    const recommendationArticles = await axios.get(`http://localhost:3001/articles?published=true&limit=4&exclude=${article._id}&category=${article.category}`)
+    const recommendationArticles = await axios.get(`${process.env.API_URL}/articles?published=true&limit=4&exclude=${article._id}&category=${article.category}`)
     const articleRecs = recommendationArticles.data
 
     return{

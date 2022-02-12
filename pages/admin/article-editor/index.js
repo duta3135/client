@@ -38,7 +38,7 @@ function ArticleEditor({cookies, writers}) {
             published: published
         }
         // console.log(document)
-        axios.post("http://localhost:3001/articles", document).then(res=>{
+        axios.post(`${process.env.API_URL}/articles`, document).then(res=>{
             setModalState({
                 text: "posted",
                 mainAction: ()=>{setModalState({
@@ -92,7 +92,7 @@ function ArticleEditor({cookies, writers}) {
 
 ArticleEditor.getInitialProps = async ({req}) =>{
     const cookies = parseCookies(req)
-    const res = await axios.get('http://localhost:3001/writers')
+    const res = await axios.get(`${process.env.API_URL}/writers`)
     const writers = res.data
     return {
         cookies: cookies.tcm_user,

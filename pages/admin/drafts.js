@@ -31,7 +31,7 @@ export default function Index({cookies, articles}) {
 
 Index.getInitialProps = async ({req}) =>{
     const cookies = parseCookies(req)
-    const res = await axios.get('http://localhost:3001/articles?published=false')
+    const res = await axios.get(`${process.env.API_URL}/articles?published=false`)
     return {
         cookies: cookies.tcm_user,
         articles: res.data

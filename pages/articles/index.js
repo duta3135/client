@@ -19,7 +19,7 @@ function Index({articles}) {
 
 export default Index;
 export async function getStaticProps(){
-    const res = await axios.get('http://localhost:3001/articles?published=true')
+    const res = await axios.get(`${process.env.API_URL}/articles?published=true`)
     const articles = res.data
     return{
         props:{

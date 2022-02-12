@@ -47,8 +47,8 @@ export default function Home({articles, newestArticle}) {
   )
 }
 export async function getStaticProps(){
-  const articles = await axios.get('http://localhost:3001/articles?published=true&limit=4')
-  const newestArticle= await axios.get('http://localhost:3001/articles?published=true&limit=1')
+  const articles = await axios.get(`${process.env.API_URL}/articles?published=true&limit=4`)
+  const newestArticle= await axios.get(`${process.env.API_URL}/articles?published=true&limit=1`)
   return{
     props:{
       articles: articles.data,

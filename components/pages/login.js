@@ -13,7 +13,7 @@ function Login() {
     const router = useRouter()
 
     async function authenticate(data){
-        axios.post(`http://localhost:3001/verify`, {
+        axios.post(`${process.env.API_URL}1/verify`, {
             username: data.username,
             password: data.password
         })
