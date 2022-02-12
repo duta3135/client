@@ -95,7 +95,7 @@ function ArticleEditor({cookies, writers, article}) {
         return (
             <div className={styles.wrapper}>
                 <Head>
-                    <title>Article Editor</title>
+                    <title>{article.title}</title>
                 </Head>
                 <EditorSidebar 
                     writers={writers} 

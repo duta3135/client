@@ -12,7 +12,7 @@ export default function Index({cookies, articles}) {
         return (
             <div>
                 <Head>
-                    <title>Admin Page</title>
+                    <title>Published</title>
                 </Head>
                 <AdminLayout>
                     <main className={styles.main}>
