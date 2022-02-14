@@ -8,6 +8,7 @@ import axios from 'axios'
 import AdminArticleCard from '../../components/AdminArticleCard'
 
 export default function Index({cookies, articles}) {
+    console.log(process.env.API_URL)
     if(cookies){
         return (
             <div>

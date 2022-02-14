@@ -23,7 +23,7 @@ export default function Home({articles, newestArticle}) {
               <img src={newestArticle[0].cover}/>
               <h2>{newestArticle[0].title}</h2>
               <p>{newestArticle[0].description}</p>
-              <p>written by {newestArticle[0].writers}</p>
+              <p>written by {newestArticle[0].writers.map(writer=><Link href={writer.insta}>{writer.name}</Link>)}</p>
             </div>
           </Link>
             <div className={styles.heroText}>

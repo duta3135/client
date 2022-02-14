@@ -16,7 +16,7 @@ export default function EditorSidebar({writers, setFormState, formState, uploadS
     }
     function resetImage(imageId){
         try {
-            axios.delete(`http://localhost:3001/images/${imageId}`).then(
+            axios.delete(`${process.env.API_URL}/images/${imageId}`).then(
                 setUploadStatus({isUploaded:false, url: '', id: ''})
             ).then(
                 setSelectedFile(null)
@@ -32,7 +32,7 @@ export default function EditorSidebar({writers, setFormState, formState, uploadS
         formData.append("image", selectedFile);
         if(formData){
             try {
-          axios.post('http://localhost:3001/images', formData).then(res=>setUploadStatus({isUploaded:true, url: res.data.message.url, id: res.data.id}))
+          axios.post(`${process.env.API_URL}/images`, formData).then(res=>setUploadStatus({isUploaded:true, url: res.data.message.url, id: res.data.id}))
         } catch (err) {
           console.error(err)
         }

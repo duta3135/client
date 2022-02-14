@@ -11,7 +11,7 @@ export default function ArticleCard({props}) {
             <div className={styles.text}>
                 <h3>{title}</h3>
                 <p>{description}</p>
-                <p>written by {writers}</p>
+                <p>written by {writers.map(writer=><Link href={writer.insta}>{writer.name}</Link>)}</p>
             </div>
         </div>
         </Link>)

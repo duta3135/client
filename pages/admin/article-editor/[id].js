@@ -19,7 +19,7 @@ function ArticleEditor({cookies, writers, article}) {
 
     const [modalState, setModalState] = useState({
         text: '',
-        mainAction: console.log(),
+        mainAction: ()=>console.log(),
         show: false
     });
     const [formState, setFormState] = useState({
@@ -131,7 +131,7 @@ ArticleEditor.getInitialProps = async ({req, query}) =>{
     return {
         cookies: cookies.tcm_user,
         writers: writers,
-        article: fetchArticle.data
+        article: fetchArticle.data[0]
     }
 }
 export default ArticleEditor

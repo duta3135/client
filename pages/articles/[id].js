@@ -6,11 +6,11 @@ import {Editor, EditorState, convertFromRaw} from 'draft-js';
 import { useRouter } from 'next/router'
 import styles from '../../styles/DynamicArticle.module.css'
 import { route } from 'next/dist/server/router';
+import Link from 'next/link';
 
 function DynamicArticle({article, articleRecs}) {
     const {_id, category, title, description, writers, content, cover, published} = article
     const convertedState = convertFromRaw(JSON.parse(content))
-    const router = useRouter()
     const [editorState, setEditorState] = useState(EditorState.createWithContent(convertedState))
     return (
         <div className={styles.container}>
@@ -33,7 +33,7 @@ function DynamicArticle({article, articleRecs}) {
                 <meta name="twitter:card" content="summary"/>
             </Head>
             <h1>{title}</h1>
-            <h4>written by {writers}</h4>
+            <h4>written by {writers.map(writer=><Link href={writer.insta}>{writer.name}</Link>)}</h4>
             <article >
                 <Editor
                     editorState={editorState}
@@ -59,7 +59,7 @@ export async function getStaticPaths(){
 }
 export async function getStaticProps({params}){
     const res = await axios.get(`${process.env.API_URL}/articles/${params.id}`)
-    const article = res.data
+    const article = res.data[0]
     const recommendationArticles = await axios.get(`${process.env.API_URL}/articles?published=true&limit=4&exclude=${article._id}&category=${article.category}`)
     const articleRecs = recommendationArticles.data
 

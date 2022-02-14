@@ -11,7 +11,7 @@ function AdminArticleCard({article}) {
         <img src={article.cover}></img></Link>
         <span>
         <h3>{article.title}</h3>
-        by {article.writers}
+        by {article.writers.map(writer=><Link href={writer.insta}>{writer.name}</Link>)}
         </span>
         <h4>{status}</h4>
         <a href={`/admin/article-editor/${article._id}`} >

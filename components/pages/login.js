@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 
 import styles from '../../styles/LogIn.module.css'
 function Login() {
-    const { register, handleSubmit, formState: { errors } , getValues} = useForm();
+    const { register, handleSubmit, formState: { errors }} = useForm();
     const [cookie, setCookie]=useCookies(["user"])
     const router = useRouter()
 
@@ -39,8 +39,10 @@ function Login() {
             <form onSubmit={handleSubmit(authenticate)}>
                 <label>Username</label>
                 <input placeholder="johndoe95" type="text" {...register("username", {required:true})}/>
+                {errors.username && <span>*username required</span>}
                 <label>Password</label>
                 <input type="password" {...register("password", {required:true})}/>
+                {errors.username && <span>*password required</span>}
                 <button type='submit'>Log in</button>
                 <div>
                     Don't have an account? <Link href='/admin/signup'>Sign-up</Link>
