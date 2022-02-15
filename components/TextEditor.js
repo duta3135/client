@@ -4,7 +4,6 @@ import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 export default function TextEditor({setTextEditorState, initialState}){
-    console.log(setEditorState)
     const convertedState = initialState ? convertFromRaw(JSON.parse(initialState)) : {}
     const initialEditorState = initialState ? EditorState.createWithContent(convertedState) : EditorState.createEmpty()
     const [editorState, setEditorState] = useState(initialEditorState)

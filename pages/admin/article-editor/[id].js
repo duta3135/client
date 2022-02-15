@@ -24,7 +24,7 @@ function ArticleEditor({cookies, writers, article}) {
     });
     const [formState, setFormState] = useState({
         title: article.title,
-        writers: article.writers,
+        writers: article.writers.map(writer=>writer.name),
         description: article.description,
         category: article.category
     })
@@ -60,8 +60,6 @@ function ArticleEditor({cookies, writers, article}) {
         }
     }
     async function update(published){
-        if(article.content==JSON.stringify(textEditorState)) {alert('no changes made')}
-        else{
         try{
             const document = {
                 cover: uploadStatus.url,
@@ -89,7 +87,7 @@ function ArticleEditor({cookies, writers, article}) {
         }
         catch(err){
             alert(err)
-        }}
+        }
     }
     if(cookies){
         return (
