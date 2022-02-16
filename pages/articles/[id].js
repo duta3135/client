@@ -6,9 +6,10 @@ import {Editor, EditorState, convertFromRaw} from 'draft-js';
 import { useRouter } from 'next/router'
 import styles from '../../styles/DynamicArticle.module.css'
 import { route } from 'next/dist/server/router';
-import Link from 'next/link';
+import a from 'next/link';
 
-function DynamicArticle({article, articleRecs}) {
+function DynamicArticle({article, otherArticleRecs, relatedArticleRecs}) {
+    console.log(relatedArticleRecs)
     const {_id, category, title, description, writers, content, cover, published} = article
     const convertedState = convertFromRaw(JSON.parse(content))
     const [editorState, setEditorState] = useState(EditorState.createWithContent(convertedState))
@@ -32,17 +33,23 @@ function DynamicArticle({article, articleRecs}) {
                 <meta name="twitter:image" content={cover}/>
                 <meta name="twitter:card" content="summary"/>
             </Head>
-            <h1>{title}</h1>
-            <h4>written by {writers.map(writer=><Link href={writer.insta}>{writer.name}</Link>)}</h4>
-            <article >
-                <Editor
-                    editorState={editorState}
-                    readOnly={true}
-                />
-            </article>
-                <h2>Articles you might like</h2>
-            <section>
-                {articleRecs.map((article)=><ArticleCard props={article}/>)}
+            <main>
+                <h1>{title}</h1>
+                <h4>written by {writers.map(writer=><a href={writer.insta}>{writer.name},</a>)}</h4>
+                <article >
+                    <Editor
+                        editorState={editorState}
+                        readOnly={true}
+                    />
+                </article>
+                <section className={styles.relatedArticles}>
+                    <h2>Related Articles</h2>
+                    {relatedArticleRecs.map((article)=><ArticleCard props={article}/>)}
+                </section>
+            </main>
+            <section className={styles.otherArticles}>
+                <h2>Other Articles</h2>
+                {otherArticleRecs.map((article)=><ArticleCard props={article}/>)}
             </section>
         </div>
     )
@@ -60,10 +67,12 @@ export async function getStaticPaths(){
 export async function getStaticProps({params}){
     const res = await axios.get(`${process.env.API_URL}/articles/${params.id}`)
     const article = res.data[0]
-    const recommendationArticles = await axios.get(`${process.env.API_URL}/articles?published=true&limit=4&exclude=${article._id}&category=${article.category}`)
-    const articleRecs = recommendationArticles.data
+    const otherArticles = await axios.get(`${process.env.API_URL}/articles?published=true&limit=4&exclude=${article._id}`)
+    const relatedArticles = await axios.get(`${process.env.API_URL}/articles?published=true&limit=4&exclude=${article._id}&category=${article.category}`)
+    const relatedArticleRecs = relatedArticles.data
+    const otherArticleRecs = otherArticles.data
 
     return{
-        props: {article, articleRecs}
+        props: {article, otherArticleRecs, relatedArticleRecs}
     }
 }

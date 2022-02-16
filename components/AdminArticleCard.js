@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import a from 'next/link';
 import React from 'react';
 import styles from '../styles/AdminArticleCard.module.css'
 
@@ -7,11 +7,11 @@ function AdminArticleCard({article}) {
   return (
   
     <div className={styles.wrapper}>
-      <Link href={`/articles/${article._id}`}>
-        <img src={article.cover}></img></Link>
+      <a href={`/articles/${article._id}`}>
+        <img src={article.cover}></img></a>
         <span>
         <h3>{article.title}</h3>
-        by {article.writers.map(writer=><Link href={writer.insta}>{writer.name}</Link>)}
+        by {article.writers.map(writer=><a href={writer.insta}>{writer.name},</a>)}
         </span>
         <h4>{status}</h4>
         <a href={`/admin/article-editor/${article._id}`} >
