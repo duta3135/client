@@ -16,7 +16,7 @@ function ArticleEditor({cookies, writers}) {
     const router = useRouter()
     const [modalState, setModalState] = useState({
         text: '',
-        mainAction: console.log(),
+        mainAction: ()=>{},
         show: false
     });
     const [formState, setFormState] = useState({

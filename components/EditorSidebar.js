@@ -6,13 +6,15 @@ import {useState} from 'react'
 
 export default function EditorSidebar({writers, setFormState, formState, uploadStatus, setUploadStatus}){
     const segments = ['Entertainment', 'Health', 'Food', 'Politics']
+    const [formEditState, setFormEditState] = useState(true)
     const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: formState
     });
     const [selectedFile, setSelectedFile] = useState(null);
-
+    
     function onSubmit(data){
         setFormState(data)
+        setFormEditState(false)
     }
     function resetImage(imageId){
         try {
@@ -30,7 +32,7 @@ export default function EditorSidebar({writers, setFormState, formState, uploadS
         e.preventDefault()
         const formData = new FormData()
         formData.append("image", selectedFile);
-        if(formData){
+        if(selectedFile){
             try {
           axios.post(`${process.env.API_URL}/images`, formData).then(res=>setUploadStatus({isUploaded:true, url: res.data.message.url, id: res.data.id}))
         } catch (err) {
@@ -62,20 +64,21 @@ export default function EditorSidebar({writers, setFormState, formState, uploadS
             </form>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <label>Title</label>
-                <input type="text" {...register('title', {required:true})}/>
+                <input type="text" {...register('title', {required:true, disabled: !formEditState})}/>
                 <label>Description</label>
-                <input type='text' {...register('description', {required: true, maxLength:150})}/>
+                <input type='text' {...register('description', {required: true, maxLength:150, disabled: !formEditState})}/>
                 <label>Writers</label>
-                <select name='writers'{...register('writers', {required:true})} multiple>
+                <select name='writers'{...register('writers', {required:true, disabled: !formEditState})} multiple>
                     {writers.map((writer)=>(
                     <option key={writer.id} value={writer.name}>{writer.name}</option>))}
                 </select>
                 <label>Segment</label>
-                <select name='segment' {...register('category', {required: true})}>
+                <select name='segment' {...register('category', {required: true, disabled: !formEditState})}>
                     {segments.map((segment)=>
                     <option key={segment} value={segment}>{segment}</option>)}
                 </select>
-                <button type='submit'>okay</button>
+                {formEditState?<button type='submit' className={styles.submitBtn}>okay</button>:
+                <div onClick={()=>setFormEditState(true)} className={styles.editBtn}>edit</div>}
             </form>
             
         </div>

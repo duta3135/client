@@ -48,7 +48,7 @@
 .form option {
   padding: 2px 0 2px 10px;
 }
-.form button {
+.submitBtn {
   background-color: #5bb8f1;
   border: none;
   height: 30px;
@@ -56,8 +56,8 @@
   border-radius: 5px;
   margin-top: 0.25em;
 }
-.form button:active,
-.form button:hover {
+.submitBtn:active,
+.submitBtn:hover {
   transition: 200ms;
   background-color: #6cc7ff;
   outline: none;
@@ -81,13 +81,19 @@
   max-width: 100%;
   border-radius: 5px;
 }
-.inputFile input {
-  /* visibility: hidden; */
-}
+
 .inputFile {
   background-color: #fff;
   height: 8em;
   cursor: pointer;
   border-radius: 5px;
   margin-bottom: 0.5em;
+}
+.editBtn {
+  background-color: rgb(212, 212, 212);
+  border: none;
+  height: 30px;
+  color: #222;
+  border-radius: 5px;
+  margin-top: 0.25em;
 }

@@ -18,7 +18,7 @@ function DynamicArticle({article, articleRecs}) {
                 <title>{title}</title>
                 <meta name='description' content={description}/>
                 <meta name='keywords' content={category}/>
-                <meta name='author' content={writers}/>
+                <meta name='author' content={writers.map(writer=>writer.name)}/>
                 <meta property="og:site_name" content='The Curious Mind'/>
                 <meta property="og:title" content={title}/>
                 <meta property="og:description" content={description}/>
