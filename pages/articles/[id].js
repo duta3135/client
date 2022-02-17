@@ -37,10 +37,12 @@ function DynamicArticle({article, otherArticleRecs, relatedArticleRecs}) {
                 <h1>{title}</h1>
                 <h4>written by {writers.map(writer=><a href={writer.insta}>{writer.name},</a>)}</h4>
                 <article >
+                <hr/>
                     <Editor
                         editorState={editorState}
                         readOnly={true}
                     />
+                <hr/>
                 </article>
                 <section className={styles.relatedArticles}>
                     <h2>Related Articles</h2>

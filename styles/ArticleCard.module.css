@@ -13,6 +13,7 @@
 }
 .text {
   padding: 0.625em;
+  font-family: "Lora", serif;
 }
 .text p {
   font-family: "Nunito", sans-serif;
