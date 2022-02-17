@@ -1,9 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora&family=Nunito&display=swap");
 
+.layoutContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+.layoutContainer header {
+  width: 100%;
+}
 .container main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 40px 80px 40px 80px;
+  max-width: 1260px;
 }
 .container header {
   background-color: #e8d288;
@@ -13,4 +24,17 @@
 }
 .navLinks {
   margin: 0 30px;
+}
+@media only screen and (max-width: 768px) and (min-width: 481px) {
+  .container main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+  .container main {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .navLinks {
+    display: none;
+  }
 }

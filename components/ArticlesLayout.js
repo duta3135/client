@@ -9,7 +9,7 @@ export function ArticlesLayout({children}) {
     axios.get('http://localhost:3001/articles?sample=true').then(res=>router.push(`/articles/${res.data[0]._id}`))
   }
   return (
-  <div>
+  <div className={styles.layoutContainer}>
       <header>
         <a className={styles.navLinks} href='/articles/entertainment'>Entertainment</a>
         <a className={styles.navLinks} href='/articles/food'>Food</a>
