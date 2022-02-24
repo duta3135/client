@@ -7,8 +7,9 @@
 }
 .hero {
   display: grid;
-  grid-template-areas: "newArticle x heroText";
-  grid-template-columns: 4fr 1fr 7fr;
+  grid-template-areas: "newArticle heroText";
+  grid-template-columns: 4fr 8fr;
+  column-gap: 3em;
   padding: 0 80px 0 80px;
 }
 .heroText {
@@ -18,11 +19,17 @@
   height: 60px;
   width: 300px;
 }
+.container h1,
+.container h2,
+.container h3 {
+  font-family: "Lora", serif;
+}
 .newestArticle {
   grid-area: newArticle;
+  background-color: #e8d288;
 }
 .newestArticle img {
-  max-width: 100%;
+  width: 100%;
 }
 .articles {
   text-align: center;
@@ -32,4 +39,30 @@
   display: grid;
   text-align: left;
   grid-template-columns: repeat(4, 1fr);
+}
+@media only screen and (max-width: 480px) {
+  .hero {
+    display: flex;
+    /* grid-template-areas: "main";
+    grid-template-columns: 1fr;
+    column-gap: 2em; */
+    flex-direction: column;
+    padding: 0 20px 0 20px;
+  }
+  .heroText {
+    /* grid-area: main; */
+  }
+  .newestArticle {
+    /* grid-area: main; */
+    background-color: #e8d288;
+  }
+}
+@media only screen and (max-width: 768px) and (min-width: 481px) {
+  .hero {
+    display: grid;
+    grid-template-areas: "newArticle heroText";
+    grid-template-columns: 4fr 8fr;
+    column-gap: 2em;
+    padding: 0 40px 0 40px;
+  }
 }

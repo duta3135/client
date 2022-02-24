@@ -78,7 +78,7 @@ export default function EditorSidebar({writers, setFormState, formState, uploadS
                     <option key={segment} value={segment}>{segment}</option>)}
                 </select>
                 {formEditState?<button type='submit' className={styles.submitBtn}>okay</button>:
-                <div onClick={()=>setFormEditState(true)} className={styles.editBtn}>edit</div>}
+                <div onClick={()=>setFormEditState(true)} className={styles.editBtn}><p>edit</p></div>}
             </form>
             
         </div>

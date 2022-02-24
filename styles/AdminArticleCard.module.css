@@ -13,28 +13,33 @@
   height: 100%;
   border-radius: 5px;
 }
-.wrapper span h3 {
+.wrapper div h3 {
   margin: 15px 0 5px 0;
   font-family: "Lora", serif;
 }
-.wrapper span h4 {
+.wrapper div h4 {
   margin: 0;
 }
-.wrapper span {
+.wrapper div {
   margin-left: 20px;
   margin-right: auto;
   font-family: "Nunito", sans-serif;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
 }
-.wrapper button,
-.wrapper a {
+.wrapper button {
   width: 25px;
   height: 25px;
   padding: 0;
   margin: auto 10px auto 10px;
   background-color: rgba(0, 0, 0, 0);
 }
-.wrapper button img {
-  width: 100%;
+.wrapper p {
+  margin-top: 0;
+}
+.wrapper a {
   height: 100%;
+  width: max-content;
 }

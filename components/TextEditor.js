@@ -20,6 +20,19 @@ export default function TextEditor({setTextEditorState, initialState}){
                 wrapperClassName="wrapperClassName"
                 editorClassName="editorClassName"
                 onEditorStateChange={onEditorStateChange}
+                toolbar={{
+                    options: [
+                        "fontSize",
+                        "blockType", 
+                        "inline",
+                        "list",
+                        "textAlign",
+                        "image",
+                        "emoji",
+                        "embedded",
+                        "history"
+                    ]
+                }}
             />
         </div>
     )

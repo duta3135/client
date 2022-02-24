@@ -14,7 +14,6 @@ export default function Home({articles, newestArticle}) {
       </Head>
       <header>
         <h3>The Curious Mind</h3>
-        <button>Contact us</button>
       </header>
       <main className={styles.main}>
         <section className={styles.hero}>
@@ -26,13 +25,13 @@ export default function Home({articles, newestArticle}) {
               <p>written by {newestArticle[0].writers.map(writer=><Link href={writer.insta}>{writer.name}</Link>)}</p>
             </div>
           </Link>
-            <div className={styles.heroText}>
-              <h1>A gateway to a world of curiosity</h1>
-              <p>a youth-run journalism NGO dedicated to the pursuit of the student voice established in 2020</p>
-              <a href='linktree'>
-              </a>
-              <button>More About Us</button>
-            </div>
+          <div className={styles.heroText}>
+            <h1>A gateway to a world of curiosity</h1>
+            <p>a youth-run journalism NGO dedicated to the pursuit of the student voice established in 2020</p>
+            <a href='linktree'>
+            </a>
+            <button>More About Us</button>
+          </div>
         </section>
         <section className={styles.articles}>
           <h1>Our Articles</h1>

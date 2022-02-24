@@ -1,24 +1,26 @@
-import a from 'next/link';
 import React from 'react';
 import styles from '../styles/AdminArticleCard.module.css'
 
 function AdminArticleCard({article}) {
   const status = article.published ? <div>published</div> : <div>draft</div>
+  function edit(path){
+    location.replace(path)
+  }
   return (
-  
     <div className={styles.wrapper}>
-      <a href={`/articles/${article._id}`}>
-        <img src={article.cover}></img></a>
-        <span>
-        <h3>{article.title}</h3>
-        by {article.writers.map(writer=><a href={writer.insta}>{writer.name},</a>)}
-        </span>
+      <a className={styles.cover} href={`/articles/${article._id}`} >
+        <img src={article.cover}></img>
+      </a>
+        <div>
+          <h3>{article.title}</h3>
+          <p>by {article.writers.map(writer=><a href={writer.insta}>{writer.name},</a>)}</p>
+        </div>
         <h4>{status}</h4>
-        <a href={`/admin/article-editor/${article._id}`} >
+        <button onClick={()=>edit(`/admin/article-editor/${article._id}`)}>
           <img src='https://res.cloudinary.com/duta3135/image/upload/v1644299955/edit_icon_mzmmm3.png' />
-        </a>
+        </button>
         <button>
-          <img src='https://res.cloudinary.com/duta3135/image/upload/v1644299948/trashcan_icon_lzdydl.png'/>
+          <img  src='https://res.cloudinary.com/duta3135/image/upload/v1644299948/trashcan_icon_lzdydl.png'/>
         </button>
     </div>
   )
