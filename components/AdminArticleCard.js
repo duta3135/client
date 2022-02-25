@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/AdminArticleCard.module.css'
 
-function AdminArticleCard({article}) {
+function AdminArticleCard({article, setModalState}) {
   const status = article.published ? <div>published</div> : <div>draft</div>
   function edit(path){
     location.replace(path)
@@ -19,7 +19,13 @@ function AdminArticleCard({article}) {
         <button onClick={()=>edit(`/admin/article-editor/${article._id}`)}>
           <img src='https://res.cloudinary.com/duta3135/image/upload/v1644299955/edit_icon_mzmmm3.png' />
         </button>
-        <button>
+        <button onClick={()=>{
+          setModalState({
+            text: `Delete ${article.title}?`,
+            mainAction: ()=>console.log(`deleted ${article.title}`),
+            show: true
+          })
+        }}>
           <img  src='https://res.cloudinary.com/duta3135/image/upload/v1644299948/trashcan_icon_lzdydl.png'/>
         </button>
     </div>

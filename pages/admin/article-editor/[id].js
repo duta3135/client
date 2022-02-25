@@ -9,11 +9,16 @@ import axios from 'axios'
 import Modal from "../../../components/Modal"
 import Login from '../../../components/pages/login'
 import Head from "next/head"
+import { useEffect } from "react"
 
 import { parseCookies } from '../../../helpers/parseCookies'
 
 const NoSSREditor = dynamic(()=> import('../../../components/TextEditor'), {ssr: false})
 function ArticleEditor({cookies, writers, article}) {
+    useEffect(() => {
+      setTextEditorState(JSON.parse(article.content))
+    }, [])
+    
     const [uploadStatus, setUploadStatus] = useState({isUploaded: true, url: article.cover, id: ''})
     const router = useRouter()
 

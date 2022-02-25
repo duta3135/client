@@ -18,15 +18,15 @@ const Portal= ({text, mainAction,show , setModalState}) => {
    const element = show?(
       <div className={styles.overlay}>
          <div className={styles.modal}>
-            <h1>{text}</h1> 
-               <div>
-                  <button onClick={()=>setModalState({
-                     text: text,
-                     mainAction: mainAction,
-                     show: !show
-                  })}>cancel</button>
-                  <button onClick={()=>mainAction()}>okay</button>
-               </div>
+            <p>{text}</p> 
+            <div className={styles.buttonWrapper}>
+               <button className={styles.cancelBtn} onClick={()=>setModalState({
+                  text: text,
+                  mainAction: mainAction,
+                  show: !show
+               })}>cancel</button>
+               <button className={styles.mainBtn} onClick={()=>mainAction()}>okay</button>
+            </div>
          </div>
       </div>):null
    return mounted

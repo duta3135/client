@@ -1,7 +1,7 @@
 import styles from '../styles/EditorSidebar.module.css'
 import { useForm } from "react-hook-form";
 import axios from 'axios'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 
 export default function EditorSidebar({writers, setFormState, formState, uploadStatus, setUploadStatus}){
@@ -11,6 +11,11 @@ export default function EditorSidebar({writers, setFormState, formState, uploadS
         defaultValues: formState
     });
     const [selectedFile, setSelectedFile] = useState(null);
+    useEffect(() => {
+      if(formState.title){
+        setFormEditState(false)
+      }
+    }, [])
     
     function onSubmit(data){
         setFormState(data)
