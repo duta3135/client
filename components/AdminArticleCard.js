@@ -1,4 +1,5 @@
 import React from 'react';
+import { deleteArticle } from '../helpers/deleteArticle';
 import styles from '../styles/AdminArticleCard.module.css'
 
 function AdminArticleCard({article, setModalState}) {
@@ -22,7 +23,11 @@ function AdminArticleCard({article, setModalState}) {
         <button onClick={()=>{
           setModalState({
             text: `Delete ${article.title}?`,
-            mainAction: ()=>console.log(`deleted ${article.title}`),
+            mainAction: ()=>deleteArticle(article._id).then(setModalState({
+              text: `Deleted Article`,
+              mainAction: ()=>location.reload(),
+              show: true
+            })),
             show: true
           })
         }}>
