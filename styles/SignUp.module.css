@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Lora&family=Nunito:wght@500&display=swap");
 .wrapper {
   display: flex;
   justify-content: center;
@@ -29,7 +28,7 @@
   /* box-shadow: 0 0 5px rgba(110, 110, 110, 0.03); */
 }
 .wrapper label {
-  font-family: "Lora", serif;
+  font-family: "Playfair Display", serif;
   font-size: 1rem;
 }
 .wrapper input:focus {

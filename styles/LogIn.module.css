@@ -27,7 +27,7 @@
   /* box-shadow: 0 0 5px rgba(110, 110, 110, 0.03); */
 }
 .wrapper label {
-  font-family: "Lora", serif;
+  font-family: "Playfair Display", serif;
   font-size: 1rem;
 }
 .wrapper input:focus {

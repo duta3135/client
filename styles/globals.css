@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Lora&family=Nunito&display=swap");
-
+/* @import url("https://fonts.googleapis.com/css2?family=Lora&family=Nunito&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Nunito&family=Playfair+Display&display=swap");
 html,
 body {
   padding: 0;
@@ -8,6 +8,13 @@ body {
   background-color: #fdfbef;
   color: #252b30;
   font-weight: 400;
+  --tcm-red: #f13d6a;
+  --tcm-red-hover: #fb5f86;
+  --tcm-navbar: #e8d288;
+  --tcm-neutral: #fdfbef;
+  --tcm-blue: #5bb8f1;
+  --tcm-blue-hover: #6abff2;
+  --tcm-font: "Playfair Display", serif;
 }
 
 a {

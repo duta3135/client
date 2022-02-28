@@ -22,7 +22,7 @@
 .container h1,
 .container h2,
 .container h3 {
-  font-family: "Lora", serif;
+  font-family: "Playfair Display", serif;
 }
 .newestArticle {
   grid-area: newArticle;
