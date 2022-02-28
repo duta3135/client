@@ -34,36 +34,6 @@ function ArticleEditor({cookies, writers, article}) {
         category: article.category
     })
     const [textEditorState, setTextEditorState] = useState({})
-    async function publish(published){
-
-        try{
-            const document = {
-            cover: uploadStatus.url,
-            title: formState.title,
-            writers: formState.writers,
-            description: formState.description,
-            category: formState.category,
-            content: JSON.stringify(textEditorState),
-            published: published
-        }
-        axios.post(`${process.env.API_URL}/articles`, document).then(res=>{
-            setModalState({
-                text: "posted",
-                mainAction: ()=>{setModalState({
-                    text: '',
-                    mainAction: ()=>{},
-                    show: false
-                })
-                router.push('/admin')
-            },
-                show: true
-             })
-        })
-        }
-        catch(err){
-            console.error(err)
-        }
-    }
     async function update(published){
         try{
             const document = {
@@ -78,7 +48,7 @@ function ArticleEditor({cookies, writers, article}) {
             axios.patch(`${process.env.API_URL}/articles/${article._id}`, document)
             .then(res=>{
                 setModalState({
-                    text: "updated",
+                    text: published?"posted":"updated",
                     mainAction: ()=>{setModalState({
                         text: '',
                         mainAction: ()=>{},
@@ -107,7 +77,7 @@ function ArticleEditor({cookies, writers, article}) {
                     uploadStatus={uploadStatus} 
                     setUploadStatus={setUploadStatus}/>
                 <header className={styles.header}>
-                    <DynamicSplitBtn isPublished={article.published} publish={publish} update={update} setModalState={setModalState} title={formState.title}/>
+                    <DynamicSplitBtn isPublished={article.published} update={update} setModalState={setModalState} title={formState.title}/>
                 </header>
                 
                 <main className={styles.main}>
