@@ -1,14 +1,22 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import Login from '../../components/pages/login'
 import { parseCookies } from '../../helpers/parseCookies'
 import Head from "next/head"
+import {removeWriter} from '../../helpers/removeWriter'
 import AdminLayout from '../../components/AdminLayout'
 import styles from '../../styles/Admin.module.css'
 import axios from 'axios'
-import AdminArticleCard from '../../components/AdminArticleCard'
-
+import Modal from '../../components/Modal'
+import WriterCard from '../../components/WriterCard'
 export default function Index({cookies, writers}) {
-    console.log(writers)
+    async function deleteWriter(username){
+        removeWriter(username)
+    }
+    const [modalState, setModalState] = useState({
+        text: '',
+        mainAction: ()=>{},
+        show: false
+    });
     if(cookies){
         return (
             <div>
@@ -18,9 +26,10 @@ export default function Index({cookies, writers}) {
                 <AdminLayout>
                     <main className={styles.main}>
                         <h1>Writers</h1>
-                        {writers.map((writer)=>(<h3>{writer.name}</h3>))}
+                        {writers.map((writer)=>(<WriterCard name={writer.name} insta={writer.insta} username={writer.username} deleteWriter={deleteWriter} setModalState={setModalState}/>))}
                     </main>
                 </AdminLayout>
+                <Modal text={modalState.text} mainAction={modalState.mainAction} show={modalState.show} setModalState={setModalState}/>
             </div>
         )
     }else{
