@@ -15,7 +15,7 @@
   max-width: 1260px;
 }
 .container header {
-  background-color: #e8d288;
+  background-color: var(--tcm-navbar);
   padding: 15px;
   font-family: "Nunito", sans-serif;
   text-align: center;

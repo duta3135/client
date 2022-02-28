@@ -1,6 +1,6 @@
 .container {
   max-width: 265px;
-  background-color: #e8d288;
+  background-color: var(--tcm-navbar);
   border-radius: 15px;
   margin: 5px;
 }

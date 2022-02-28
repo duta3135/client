@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  background-color: #e8d288;
+  background-color: var(--tcm-navbar);
   height: 80px;
   min-width: 450px;
   border-radius: 5px;

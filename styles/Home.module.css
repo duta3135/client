@@ -1,8 +1,5 @@
-.container {
-  --nav-color: #e8d288;
-}
 .container header {
-  background-color: var(--nav-color);
+  background-color: var(--tcm-navbar);
   display: flex;
 }
 .hero {
@@ -18,6 +15,10 @@
 .hero button {
   height: 60px;
   width: 300px;
+  background-color: var(--tcm-red);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
 }
 .container h1,
 .container h2,
@@ -26,7 +27,7 @@
 }
 .newestArticle {
   grid-area: newArticle;
-  background-color: #e8d288;
+  background-color: var(--tcm-navbar);
 }
 .newestArticle img {
   width: 100%;
@@ -54,7 +55,7 @@
   }
   .newestArticle {
     /* grid-area: main; */
-    background-color: #e8d288;
+    background-color: var(--tcm-navbar);
   }
 }
 @media only screen and (max-width: 768px) and (min-width: 481px) {

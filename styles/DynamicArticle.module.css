@@ -17,7 +17,7 @@
 }
 .container h4 a {
   margin-right: 5px;
-  color: #5bb8f1;
+  color: var(--tcm-blue);
 }
 .container h1,
 .container h2 {

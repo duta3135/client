@@ -63,7 +63,7 @@
 }
 
 .RichEditorActiveButton {
-  color: #5890ff;
+  color: var(--tcm-blue);
   margin-right: 16px;
   padding: 2px 0;
 }

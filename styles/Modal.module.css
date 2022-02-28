@@ -1,5 +1,5 @@
 .modal {
-  background-color: #e8d288;
+  background-color: var(--tcm-navbar);
   min-height: 200px;
   min-width: 300px;
   max-width: 400px;
@@ -35,13 +35,12 @@
   display: flex;
 }
 .cancelBtn {
-  background-color: rgb(228, 227, 227);
+  background-color: var(--tcm-disabled-grey);
   border: none;
-  color: #222;
   border-radius: 5px;
 }
 .mainBtn {
-  background-color: #f13d7d;
+  background-color: var(--tcm-red);
   border: none;
   border-radius: 5px;
   color: #fff;

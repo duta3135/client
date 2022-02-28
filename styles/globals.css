@@ -5,15 +5,17 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background-color: #fdfbef;
+  background-color: var(--tcm-neutral);
   color: #252b30;
   font-weight: 400;
+  --tcm-text-color: #252b30;
   --tcm-red: #f13d6a;
   --tcm-red-hover: #fb5f86;
   --tcm-navbar: #e8d288;
   --tcm-neutral: #fdfbef;
   --tcm-blue: #5bb8f1;
   --tcm-blue-hover: #6abff2;
+  --tcm-disabled-grey: rgb(228, 227, 227);
   --tcm-font: "Playfair Display", serif;
 }
 

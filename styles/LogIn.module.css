@@ -11,7 +11,7 @@
   max-width: 75ch;
   min-width: 400px;
   border-radius: 10px;
-  background-color: #e8d288;
+  background-color: var(--tcm-navbar);
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.1);
   padding: 0.75rem 1.25rem 1rem 1.25rem;
 }
@@ -31,13 +31,13 @@
   font-size: 1rem;
 }
 .wrapper input:focus {
-  outline: solid 2px #56b8f5;
+  outline: solid 2px var(--tcm-blue-hover);
 }
 .wrapper button {
   height: 2.5em;
   border: none;
   border-radius: 7px;
-  background-color: #4eb7f8;
+  background-color: var(--tcm-blue);
   color: #ffff;
   font-family: "Nunito", sans-serif;
 
@@ -46,11 +46,13 @@
 }
 .wrapper button:hover {
   transition: 100ms;
-  background-color: #5fc1fd;
+  background-color: var(--tcm-blue-hover);
 }
 .wrapper span {
   font-family: "Nunito", sans-serif;
-  color: #ec043e;
+  /* color: #ec043e; */
+  color: var(--tcm-red);
+
   line-height: 10px;
   font-size: 0.9rem;
 }
@@ -61,5 +63,5 @@
   margin-top: 10px;
 }
 .wrapper a {
-  color: #3baaf0;
+  color: var(--tcm-blue);
 }

@@ -5,14 +5,14 @@
   border: none;
   border-left: solid 1px #fff;
   border-radius: 0 5px 5px 0;
-  background-color: #5bb8f1;
+  background-color: var(--tcm-blue);
   height: 30px;
   padding: 0 7px 0 7px;
   position: absolute;
 }
 .btnDown:hover {
   transition: 200ms;
-  background-color: #6cc7ff;
+  background-color: var(--tcm-blue-hover);
   outline: none;
 }
 .mainBtn {
@@ -22,12 +22,12 @@
   border: none;
   height: 30px;
   padding: 0 20px;
-  background-color: #5bb8f1;
+  background-color: var(--tcm-blue);
   color: #fff;
 }
 .mainBtn:hover {
   transition: 200ms;
-  background-color: #6cc7ff;
+  background-color: var(--tcm-blue-hover);
   outline: none;
 }
 .dropdownClosed {
