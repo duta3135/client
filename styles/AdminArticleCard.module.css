@@ -37,6 +37,9 @@
   background-color: rgba(0, 0, 0, 0);
 }
 .wrapper p {
+  margin: auto 15px auto auto;
+}
+.wrapper div p {
   margin-top: 0;
 }
 .wrapper a {

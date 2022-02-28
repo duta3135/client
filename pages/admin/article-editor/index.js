@@ -77,9 +77,6 @@ function ArticleEditor({cookies, writers}) {
                     <NoSSREditor setTextEditorState={setTextEditorState}/>
                 </main>
                 <Modal text={modalState.text} mainAction={modalState.mainAction} show={modalState.show} setModalState={setModalState}/>
-                    
-
-                
             </div>
         )
     }
