@@ -1,9 +1,11 @@
 import React from 'react';
 import Link from 'next/link'
 import styles from '../styles/ArticleCard.module.css'
-
+import { useWindowSize } from '../helpers/useWindowSize';
 export default function ArticleCard({props}) {
     const {_id, category, title, description, writers, content, cover, published} = props
+    const size = useWindowSize()
+    console.log(size)
     return (
         <Link href={`/articles/${_id}`}>
         <div className={styles.container}>
