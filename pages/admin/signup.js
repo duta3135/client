@@ -20,7 +20,7 @@ function Signup() {
                     insta: data.insta
                 })
                 .then(result=>{
-                    setCookie("tcm_user", JSON.stringify(result.config.data.username),{
+                    setCookie("tcm_user", result.data.token,{
                         path: "/",
                         sameSite: true,
                         maxAge: parseInt(2**53 - 1)
