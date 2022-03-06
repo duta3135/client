@@ -13,18 +13,18 @@ function Login() {
     const router = useRouter()
 
     async function authenticate(data){
-        axios.post(`${process.env.API_URL}1/verify`, {
+        axios.post(`${process.env.API_URL}/verify`, {
             username: data.username,
             password: data.password
         })
         .then(res=> {
             if(res.data.isVerified){
-                setCookie("tcm_user", JSON.stringify(data.username),{
+                setCookie("tcm_user", res.data.token,{
                     path: "/",
                     sameSite: true,
                     maxAge: parseInt(2**53 - 1)
                 })
-                router.reload()
+                router.push('/admin')
             }
             else{
                 alert('login failed')

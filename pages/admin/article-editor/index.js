@@ -14,6 +14,11 @@ const NoSSREditor = dynamic(()=> import('../../../components/TextEditor'), {ssr:
 function ArticleEditor({cookies, writers}) {
     const [uploadStatus, setUploadStatus] = useState({isUploaded: false, url: '', id: ''})
     const router = useRouter()
+    const headers={
+        headers:{
+            Authorization: cookies
+        }
+    }
     const [modalState, setModalState] = useState({
         text: '',
         mainAction: ()=>{},
@@ -38,7 +43,7 @@ function ArticleEditor({cookies, writers}) {
             published: published
         }
         // console.log(document)
-        axios.post(`${process.env.API_URL}/articles`, document).then(res=>{
+        axios.post(`${process.env.API_URL}/articles`, document, headers).then(res=>{
             setModalState({
                 text: "posted",
                 mainAction: ()=>{setModalState({

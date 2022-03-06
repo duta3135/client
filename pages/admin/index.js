@@ -13,6 +13,11 @@ export default function Index({cookies, articles}) {
         mainAction: ()=>console.log(),
         show: false
     });
+    const headers={
+        headers:{
+            Authorization: cookies
+        }
+    }
     if(cookies){
         return (
             <div>
@@ -22,7 +27,7 @@ export default function Index({cookies, articles}) {
                 <AdminLayout>
                     <main className={styles.main}>
                         <h1>Articles</h1>
-                        {articles.map((article)=>(<AdminArticleCard article={article} setModalState={setModalState}/>))}
+                        {articles.map((article)=>(<AdminArticleCard article={article} headers={headers} setModalState={setModalState}/>))}
                     </main>
                 </AdminLayout>
                 <Modal text={modalState.text} mainAction={modalState.mainAction} show={modalState.show} setModalState={setModalState}/>
