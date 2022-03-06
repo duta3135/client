@@ -4,7 +4,9 @@
   border-radius: 15px;
   margin: 5px;
 }
-
+.container h3 {
+  font-size: var(--h3);
+}
 .container img {
   width: 100%;
   border-radius: 15px 15px 0 0px;

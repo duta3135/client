@@ -13,10 +13,14 @@ body {
   --tcm-red-hover: #fb5f86;
   --tcm-navbar: #e8d288;
   --tcm-neutral: #fdfbef;
-  --tcm-blue: #5bb8f1;
+  --tcm-blue: #69bef1;
   --tcm-blue-hover: #6abff2;
   --tcm-disabled-grey: rgb(228, 227, 227);
   --tcm-font: "Playfair Display", serif;
+  --h1: 2rem;
+  --h2: 1.5rem;
+  --h3: 1.23rem;
+  --normal: 1rem;
 }
 
 a {

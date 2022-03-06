@@ -8,6 +8,15 @@
 .layoutContainer header {
   width: 100%;
 }
+.headerSurpriseMe {
+  border: none;
+  padding: 1ch 3ch 1ch 3ch;
+  background-color: var(--tcm-red);
+  margin: 0 2em;
+  z-index: 333;
+  color: #fff;
+  border-radius: 5px;
+}
 .container main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -20,20 +29,44 @@
   font-family: "Nunito", sans-serif;
   text-align: center;
 }
-
+.floatingSurpriseMe {
+  display: none;
+  border: none;
+  background-color: var(--tcm-red);
+  padding: 3ch;
+  width: 50%;
+  left: 0;
+  margin: 0 2em;
+  z-index: 333;
+  color: #fff;
+  border-radius: 5px;
+}
 .navLinks {
   margin: 0 30px;
 }
 @media only screen and (max-width: 768px) and (min-width: 481px) {
   .container main {
     grid-template-columns: repeat(3, 1fr);
+    padding: 20px 40px 20px 40px;
+  }
+  .navLinks {
+    display: none;
   }
 }
 @media only screen and (max-width: 480px) and (min-width: 320px) {
   .container main {
     grid-template-columns: repeat(1, 1fr);
+    padding: 10px 20px 10px 20px;
   }
   .navLinks {
+    display: none;
+  }
+  .floatingSurpriseMe {
+    display: inline;
+    position: fixed;
+    bottom: 10%;
+  }
+  .headerSurpriseMe {
     display: none;
   }
 }

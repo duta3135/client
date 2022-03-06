@@ -15,8 +15,9 @@ export function ArticlesLayout({children}) {
         <a className={styles.navLinks} href='/articles/food'>Food</a>
         <a className={styles.navLinks} href='/articles/health'>Health</a>
         <a className={styles.navLinks} href='/articles/politics'>Politics</a>
-        <button onClick={()=>surpriseMe()}>Surpise me!</button>
+        <button className={styles.headerSurpriseMe} onClick={()=>surpriseMe()}>Surpise me!</button>
       </header>
+        <button className={styles.floatingSurpriseMe} onClick={()=>surpriseMe()}>Surpise me!</button>
       {children}
   </div>)
 }
