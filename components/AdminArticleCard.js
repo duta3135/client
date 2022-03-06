@@ -2,7 +2,7 @@ import React from 'react';
 import { deleteArticle } from '../helpers/deleteArticle';
 import styles from '../styles/AdminArticleCard.module.css'
 
-function AdminArticleCard({article, setModalState}) {
+function AdminArticleCard({article,headers, setModalState}) {
   const status = article.published ? <div>published</div> : <div>draft</div>
   const href = article.published ? `/articles/${article._id}` : "#"
   function edit(path){
@@ -24,7 +24,7 @@ function AdminArticleCard({article, setModalState}) {
         <button onClick={()=>{
           setModalState({
             text: `Delete ${article.title}?`,
-            mainAction: ()=>deleteArticle(article._id).then(setModalState({
+            mainAction: ()=>deleteArticle(article._id, headers).then(setModalState({
               text: `Deleted Article`,
               mainAction: ()=>location.reload(),
               show: true
