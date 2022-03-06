@@ -18,7 +18,11 @@ function ArticleEditor({cookies, writers, article}) {
     useEffect(() => {
       setTextEditorState(JSON.parse(article.content))
     }, [])
-    
+    const headers={
+        headers:{
+            Authorization: cookies
+        }
+    }
     const [uploadStatus, setUploadStatus] = useState({isUploaded: true, url: article.cover, id: ''})
     const router = useRouter()
 
@@ -45,10 +49,10 @@ function ArticleEditor({cookies, writers, article}) {
                 content: JSON.stringify(textEditorState),
                 published: published
             }
-            axios.patch(`${process.env.API_URL}/articles/${article._id}`, document)
+            axios.patch(`${process.env.API_URL}/articles/${article._id}`, document, headers)
             .then(res=>{
                 setModalState({
-                    text: published?"posted":"updated",
+                    text: !published?"posted":"updated",
                     mainAction: ()=>{setModalState({
                         text: '',
                         mainAction: ()=>{},

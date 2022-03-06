@@ -1,4 +1,4 @@
 import axios from "axios";
-export async function removeWriter(username){
-    axios.delete(`${process.env.API_URL}/writers/${username}`)
+export async function removeWriter(username, headers){
+    axios.delete(`${process.env.API_URL}/writers/${username}`, headers)
 }
