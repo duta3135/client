@@ -3,8 +3,10 @@ import styles from '../styles/Home.module.css'
 import axios from 'axios'
 import ArticleCard from '../components/ArticleCard'
 import Link from 'next/link'
+import { useWindowSize } from '../helpers/useWindowSize'
 
 export default function Home({articles, newestArticle}) {
+  const size = useWindowSize()
   return (
     <div className={styles.container}>
       <Head>
@@ -13,16 +15,16 @@ export default function Home({articles, newestArticle}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header>
-        <h3>The Curious Mind</h3>
+        <h2>The Curious Mind</h2>
       </header>
       <main className={styles.main}>
         <section className={styles.hero}>
           <Link href={`/articles/${newestArticle[0]._id}`}>
             <div className={styles.newestArticle}>
               <img src={newestArticle[0].cover}/>
-              <h2>{newestArticle[0].title}</h2>
+              <h3>{newestArticle[0].title}</h3>
               <p>{newestArticle[0].description}</p>
-              <p>written by {newestArticle[0].writers.map(writer=><Link href={writer.insta}>{writer.name}</Link>)}</p>
+              <p>written by {newestArticle[0].writers.map((writer, index)=><a href={writer.insta}>{newestArticle[0].writers.length-1===index?writer.name:`${writer.name}, `}</a>)}</p>
             </div>
           </Link>
           <div className={styles.heroText}>
@@ -36,9 +38,9 @@ export default function Home({articles, newestArticle}) {
         <section className={styles.articles}>
           <h1>Our Articles</h1>
           <div className={styles.articleContainer}>
-            {articles.map(article=><ArticleCard props={article}/>)}
+            {articles.map(article=><ArticleCard size={size.width}props={article}/>)}
           </div>
-          <Link href='/articles'><button>See more articles</button></Link>
+          <a href='/articles'><button className={styles.seeMoreBtn}>See more articles</button></a>
         </section>
         <section className={styles.podcast}></section>
       </main>
