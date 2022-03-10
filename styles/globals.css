@@ -12,7 +12,7 @@ body {
   --tcm-red: #f13d6a;
   --tcm-red-hover: #fb5f86;
   --tcm-navbar: #e8d288;
-  --tcm-neutral: #fdfbef;
+  --tcm-neutral: hsl(0, 0%, 100%);
   --tcm-blue: #69bef1;
   --tcm-blue-hover: #6abff2;
   --tcm-disabled-grey: rgb(228, 227, 227);
