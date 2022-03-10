@@ -11,11 +11,12 @@
   min-width: 300px;
   text-align: left;
 }
-.container h4 {
+.writtenBy,
+.container p {
   font-family: "Nunito", sans-serif;
   font-weight: 400;
 }
-.container h4 a {
+.writtenBy a {
   margin-right: 5px;
   color: var(--tcm-blue);
 }
@@ -32,6 +33,10 @@
 
 .otherArticles {
   grid-area: side;
+}
+.relatedArticles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, max-content));
 }
 @media only screen and (max-width: 768px) {
   .container {

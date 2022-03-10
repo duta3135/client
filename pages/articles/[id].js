@@ -3,13 +3,11 @@ import React , {useState} from 'react';
 import ArticleCard from '../../components/ArticleCard';
 import Head from 'next/head';
 import {Editor, EditorState, convertFromRaw} from 'draft-js';
-import { useRouter } from 'next/router'
 import styles from '../../styles/DynamicArticle.module.css'
-import { route } from 'next/dist/server/router';
-import a from 'next/link';
-
+import {useWindowSize} from '../../helpers/useWindowSize'
 function DynamicArticle({article, otherArticleRecs, relatedArticleRecs}) {
     console.log(relatedArticleRecs)
+    const size = useWindowSize()
     const {_id, category, title, description, writers, content, cover, published} = article
     const convertedState = convertFromRaw(JSON.parse(content))
     const [editorState, setEditorState] = useState(EditorState.createWithContent(convertedState))
@@ -35,7 +33,8 @@ function DynamicArticle({article, otherArticleRecs, relatedArticleRecs}) {
             </Head>
             <main>
                 <h1>{title}</h1>
-                <h4>written by {writers.map(writer=><a href={writer.insta}>{writer.name},</a>)}</h4>
+                <p>{description}</p>
+                <p className={styles.writtenBy}>written by {writers.map((writer, index)=><a href={writer.insta}>{writers.length-1===index?writer.name:`${writer.name}, `}</a>)}</p>
                 <article >
                 <hr/>
                     <Editor
@@ -44,14 +43,14 @@ function DynamicArticle({article, otherArticleRecs, relatedArticleRecs}) {
                     />
                 <hr/>
                 </article>
-                <section className={styles.relatedArticles}>
                     <h2>Related Articles</h2>
-                    {relatedArticleRecs.map((article)=><ArticleCard props={article}/>)}
+                <section className={styles.relatedArticles}>
+                    {relatedArticleRecs.map((article)=><ArticleCard props={article} size={size.width}/>)}
                 </section>
             </main>
             <section className={styles.otherArticles}>
                 <h2>Other Articles</h2>
-                {otherArticleRecs.map((article)=><ArticleCard props={article}/>)}
+                {otherArticleRecs.map((article)=><ArticleCard props={article} size={size.width}/>)}
             </section>
         </div>
     )
