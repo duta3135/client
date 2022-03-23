@@ -11,6 +11,9 @@
   justify-content: center;
   align-items: center;
 }
+.navLinks {
+  cursor: pointer;
+}
 .modal p {
   font-family: "Nunito", sans-serif;
 }

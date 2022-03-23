@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from '../styles/ArticleCard.module.css'
-import styless from '../styles/AdminArticleCard.module.css'
-export default function ArticleCard({props, size}) {
+export default function ArticleCard({props}) {
     const {_id, category, title, description, writers, content, cover, published} = props
-    var scrSize = size!=undefined?size: 800
     
     if (scrSize>767){
         return (

@@ -3,10 +3,8 @@ import styles from '../styles/Home.module.css'
 import axios from 'axios'
 import ArticleCard from '../components/ArticleCard'
 import Link from 'next/link'
-import { useWindowSize } from '../helpers/useWindowSize'
 
 export default function Home({articles, newestArticle}) {
-  const size = useWindowSize()
   return (
     <div className={styles.container}>
       <Head>
