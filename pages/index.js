@@ -5,6 +5,7 @@ import ArticleCard from '../components/ArticleCard'
 import Link from 'next/link'
 
 export default function Home({articles, newestArticle}) {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -17,6 +18,7 @@ export default function Home({articles, newestArticle}) {
       </header>
       <main className={styles.main}>
         <section className={styles.hero}>
+          {newestArticle?
           <Link href={`/articles/${newestArticle[0]._id}`}>
             <div className={styles.newestArticle}>
               <img src={newestArticle[0].cover}/>
@@ -24,7 +26,7 @@ export default function Home({articles, newestArticle}) {
               <p>{newestArticle[0].description}</p>
               <p>written by {newestArticle[0].writers.map((writer, index)=><a href={writer.insta}>{newestArticle[0].writers.length-1===index?writer.name:`${writer.name}, `}</a>)}</p>
             </div>
-          </Link>
+          </Link>:null}
           <div className={styles.heroText}>
             <h1>A gateway to a world of curiosity</h1>
             <p>a youth-run journalism NGO dedicated to the pursuit of the student voice established in 2020</p>
@@ -36,7 +38,7 @@ export default function Home({articles, newestArticle}) {
         <section className={styles.articles}>
           <h1>Our Articles</h1>
           <div className={styles.articleContainer}>
-            {articles.map(article=><ArticleCard size={size.width}props={article}/>)}
+            {articles.map(article=><ArticleCard props={article}/>)}
           </div>
           <a href='/articles'><button className={styles.seeMoreBtn}>See more articles</button></a>
         </section>

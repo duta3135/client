@@ -4,10 +4,8 @@ import ArticleCard from '../../components/ArticleCard';
 import Head from 'next/head';
 import {Editor, EditorState, convertFromRaw} from 'draft-js';
 import styles from '../../styles/DynamicArticle.module.css'
-import {useWindowSize} from '../../helpers/useWindowSize'
 function DynamicArticle({article, otherArticleRecs, relatedArticleRecs}) {
     console.log(relatedArticleRecs)
-    const size = useWindowSize()
     const {_id, category, title, description, writers, content, cover, published} = article
     const convertedState = convertFromRaw(JSON.parse(content))
     const [editorState, setEditorState] = useState(EditorState.createWithContent(convertedState))
@@ -45,12 +43,12 @@ function DynamicArticle({article, otherArticleRecs, relatedArticleRecs}) {
                 </article>
                     <h2>Related Articles</h2>
                 <section className={styles.relatedArticles}>
-                    {relatedArticleRecs.map((article)=><ArticleCard props={article} size={size.width}/>)}
+                    {relatedArticleRecs.map((article)=><ArticleCard props={article}/>)}
                 </section>
             </main>
             <section className={styles.otherArticles}>
                 <h2>Other Articles</h2>
-                {otherArticleRecs.map((article)=><ArticleCard props={article} size={size.width}/>)}
+                {otherArticleRecs.map((article)=><ArticleCard props={article}/>)}
             </section>
         </div>
     )

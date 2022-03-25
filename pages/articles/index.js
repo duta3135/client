@@ -16,7 +16,7 @@ function Index({articles}) {
       </Head>
       <ArticlesLayout setModalState={setShow}>
         <main>
-          {articles.map((article)=><ArticleCard props={article} size={size.width}/>)}
+          {articles.map((article)=><ArticleCard props={article}/>)}
         </main>
       </ArticlesLayout>
       <MenuModal show={show} setModalState={setShow}/>

@@ -3,7 +3,6 @@ import styles from '../styles/ArticleCard.module.css'
 export default function ArticleCard({props}) {
     const {_id, category, title, description, writers, content, cover, published} = props
     
-    if (scrSize>767){
         return (
             <div className={styles.container}>
                 <a href={`/articles/${_id}`}>
@@ -18,19 +17,4 @@ export default function ArticleCard({props}) {
                 </a>
             </div>
     )
-    }
-    else{
-        return(
-            <div className={styles.wrapper}>
-                <a className={styles.cover} href={`/articles/${_id}`}>
-                    <img src={cover}/>
-                </a>
-                    <div>
-                        <h3>{title}</h3>
-                        <p>{description}</p>
-                        <p>written by {writers.map((writer, index)=><a href={writer.insta}>{writers.length-1===index?writer.name:`${writer.name}, `}</a>)}</p>
-                    </div>
-            </div>
-        )
-    }
 }
