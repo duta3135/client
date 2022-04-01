@@ -9,6 +9,10 @@ function DynamicArticle({article, otherArticleRecs, relatedArticleRecs}) {
     const {_id, category, title, description, writers, content, cover, published} = article
     const convertedState = convertFromRaw(JSON.parse(content))
     const [editorState, setEditorState] = useState(EditorState.createWithContent(convertedState))
+    function copyLink(url) {
+        navigator.clipboard.writeText(url);
+        alert("copied to clipboard");
+      } 
     return (
         <div className={styles.container}>
             <Head>
@@ -29,8 +33,12 @@ function DynamicArticle({article, otherArticleRecs, relatedArticleRecs}) {
                 <meta name="twitter:image" content={cover}/>
                 <meta name="twitter:card" content="summary"/>
             </Head>
+
             <main>
-                <h1>{title}</h1>
+                <div className={styles.top}>
+                    <h1>{title}</h1>
+                    <button onClick={()=>copyLink(location.href)}>Copy Link</button>
+                </div>
                 <p>{description}</p>
                 <p className={styles.writtenBy}>written by {writers.map((writer, index)=><a href={writer.insta}>{writers.length-1===index?writer.name:`${writer.name}, `}</a>)}</p>
                 <article >

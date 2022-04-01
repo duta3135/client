@@ -14,7 +14,8 @@ body {
   --tcm-navbar: #e8d288;
   --tcm-neutral: hsl(0, 0%, 100%);
   --tcm-blue: #69bef1;
-  --tcm-blue-hover: #6abff2;
+  --tcm-blue-hover: #81c9f7;
+  --tcm-blue-dark: #4a99ca;
   --tcm-disabled-grey: rgb(228, 227, 227);
   --tcm-font: "Playfair Display", serif;
   --h1: 2rem;

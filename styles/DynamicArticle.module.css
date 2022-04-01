@@ -2,6 +2,7 @@
   text-align: left;
   padding: 20px 80px 0 80px;
   display: grid;
+  grid-column-gap: 2em;
   grid-template-areas: "main side";
   grid-template-columns: 4fr 1fr;
 }
@@ -16,10 +17,12 @@
   font-family: "Nunito", sans-serif;
   font-weight: 400;
 }
+
 .writtenBy a {
   margin-right: 5px;
   color: var(--tcm-blue);
 }
+
 .container h1,
 .container h2 {
   font-family: "Playfair Display", serif;
@@ -30,7 +33,27 @@
 .container main {
   grid-area: main;
 }
-
+.top{
+  display: flex;
+  align-items: center;
+}
+.top h1{
+  margin-right: auto;
+}
+.container button{
+  border-radius: 5px;
+  background-color: var(--tcm-blue);
+  color: #fff;
+  height: min-content;
+  border: none;
+  padding: 1ch 2ch 1ch 2ch;
+}
+.container button:active{
+  background-color: var(--tcm-blue-dark);
+}
+.container button:hover{
+  background-color: var(--tcm-blue-hover);
+}
 .otherArticles {
   grid-area: side;
 }

@@ -6,6 +6,7 @@
   height: 100000000000vh;
   background-color: var(--tcm-navbar);
   font-size: 1rem;
+  overflow-x: hidden;
   /* position: fixed; */
 }
 .form {
