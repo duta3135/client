@@ -27,3 +27,9 @@
   display: flex;
   justify-content: flex-end;
 }
+.copyButton{
+  width: min-content;
+  border: none;
+  border-radius: 0;
+  padding: 1ch 2ch 1ch 2ch;
+}

@@ -33,7 +33,9 @@ function DynamicArticle({article, otherArticleRecs, relatedArticleRecs}) {
                 <meta name="twitter:image" content={cover}/>
                 <meta name="twitter:card" content="summary"/>
             </Head>
-
+            <header>
+                <h2>The Curious Mind</h2>
+            </header>
             <main>
                 <div className={styles.top}>
                     <h1>{title}</h1>

@@ -19,6 +19,10 @@ function ArticleEditor({cookies, writers}) {
             Authorization: cookies
         }
     }
+    function copyLink(url) {
+        navigator.clipboard.writeText(url);
+        alert("copied to clipboard");
+      }
     const [modalState, setModalState] = useState({
         text: '',
         mainAction: ()=>{},
@@ -45,7 +49,7 @@ function ArticleEditor({cookies, writers}) {
         // console.log(document)
         axios.post(`${process.env.API_URL}/articles`, document, headers).then(res=>{
             setModalState({
-                text: "posted",
+                text: <button className={styles.copyButton} onClick={()=>copyLink(location.hostname)}>Copy Link</button>,
                 mainAction: ()=>{setModalState({
                     text: '',
                     mainAction: ()=>{},

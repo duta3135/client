@@ -1,16 +1,23 @@
 .container {
   text-align: left;
-  padding: 20px 80px 0 80px;
   display: grid;
   grid-column-gap: 2em;
-  grid-template-areas: "main side";
-  grid-template-columns: 4fr 1fr;
+  grid-template-areas: "header header" "main side";
+  grid-template-columns: repeat(2, auto-fill);
 }
 .container article {
   font-family: "Nunito", sans-serif;
   max-width: 75ch;
   min-width: 300px;
   text-align: left;
+}
+.container header{
+  grid-area: header;
+  background-color: var(--tcm-navbar);
+  padding-left: 80px;
+}
+.container header h2{
+  margin: 1ch 0;
 }
 .writtenBy,
 .container p {
@@ -32,6 +39,7 @@
 }
 .container main {
   grid-area: main;
+  padding-left: 80px;
 }
 .top{
   display: flex;
@@ -56,30 +64,23 @@
 }
 .otherArticles {
   grid-area: side;
+  padding-right: 80px;
 }
 .relatedArticles {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(265px, max-content));
 }
 @media only screen and (max-width: 768px) {
-  .container {
-    text-align: left;
-    padding: 20px 40px 0 40px;
-    display: grid;
-    grid-template-areas:
-      "main"
-      "side";
-    grid-template-columns: 4fr 1fr;
+  .otherArticles, .container main, .container header{
+    padding: 0 40px 0 40px;
+    
   }
 }
 @media only screen and (max-width: 480px) and (min-width: 320px) {
+  .container main, .otherArticles, .container header {
+    padding: 0 20px 0 20px;
+  }
   .container {
-    text-align: left;
-    padding: 20px 20px 0 20px;
-    display: grid;
-    grid-template-areas:
-      "main"
-      "side";
-    grid-template-columns: 4fr 1fr;
+  grid-template-areas: "header" "main" "side";
   }
 }

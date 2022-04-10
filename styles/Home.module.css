@@ -1,6 +1,19 @@
 .container header {
   background-color: var(--tcm-navbar);
   display: flex;
+  align-items: center;
+  position: sticky;
+  padding:0 80px;
+}
+.container header h2{
+  margin-right: auto;
+}
+.container header button{
+  padding: 1ch 2ch 1ch 2ch;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--tcm-blue);
+  color: #fff;
 }
 .container p {
   font-family: "Nunito", sans-serif;
@@ -10,6 +23,7 @@
   grid-template-areas: "newArticle heroText";
   grid-template-columns: 4fr 8fr;
   column-gap: 3em;
+  margin-bottom: 3em;
   padding: 0 80px 0 80px;
 }
 .heroText {
@@ -69,17 +83,10 @@
 @media only screen and (max-width: 480px) {
   .hero {
     display: flex;
-    /* grid-template-areas: "main";
-    grid-template-columns: 1fr;
-    column-gap: 2em; */
     flex-direction: column;
     padding: 0 20px 0 20px;
   }
-  .heroText {
-    /* grid-area: main; */
-  }
   .newestArticle {
-    /* grid-area: main; */
     background-color: var(--tcm-navbar);
   }
   .articleContainer {
@@ -87,9 +94,12 @@
     text-align: left;
     grid-template-columns: 1fr;
   }
+  .container header{
+    padding: 0 20px;
+  }
   .articles {
     text-align: center;
-    padding: 0 20px 0 20px;
+    padding: 0 20px;
   }
 }
 @media only screen and (max-width: 768px) and (min-width: 481px) {
@@ -98,7 +108,7 @@
     grid-template-areas: "newArticle heroText";
     grid-template-columns: 4fr 8fr;
     column-gap: 2em;
-    padding: 0 40px 0 40px;
+    padding: 0 40px;
   }
   .articleContainer {
     display: grid;
@@ -107,6 +117,9 @@
   }
   .articles {
     text-align: center;
-    padding: 0 40px 0 40px;
+    padding: 0 40px;
+  }
+  .container header{
+    padding: 0 40px;
   }
 }
