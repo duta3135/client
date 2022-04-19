@@ -49,7 +49,7 @@ function ArticleEditor({cookies, writers}) {
         // console.log(document)
         axios.post(`${process.env.API_URL}/articles`, document, headers).then(res=>{
             setModalState({
-                text: <button className={styles.copyButton} onClick={()=>copyLink(location.hostname)}>Copy Link</button>,
+                text: <button className={styles.copyButton} onClick={()=>copyLink(`${location.hostname}/articles/${res.id}`)}>Copy Link</button>,
                 mainAction: ()=>{setModalState({
                     text: '',
                     mainAction: ()=>{},

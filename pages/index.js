@@ -58,6 +58,6 @@ export async function getStaticProps(){
     props:{
       articles: articles.data,
       newestArticle: newestArticle.data
-    }
+    },revalidate: 3600
   }
 }

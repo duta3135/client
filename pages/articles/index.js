@@ -6,10 +6,8 @@ import styles from '../../styles/ArticlesPage.module.css'
 import { useState } from 'react';
 import { ArticlesLayout } from '../../components/ArticlesLayout';
 import MenuModal from '../../components/MenuModal';
-import {useWindowSize} from '../../helpers/useWindowSize'
 function Index({articles}) {
   const [show, setShow] = useState(false)
-  const size = useWindowSize()
   return <div className={styles.container}>
     <Head>
           <title>Articles</title>
@@ -30,6 +28,6 @@ export async function getStaticProps(){
     return{
         props:{
             articles
-        }
+        },revalidate: 3600
     }
 }

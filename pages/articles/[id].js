@@ -82,6 +82,6 @@ export async function getStaticProps({params}){
     const otherArticleRecs = otherArticles.data
 
     return{
-        props: {article, otherArticleRecs, relatedArticleRecs}
+        props: {article, otherArticleRecs, relatedArticleRecs},revalidate: 3600
     }
 }
