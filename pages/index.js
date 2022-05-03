@@ -6,7 +6,6 @@ import Link from 'next/link'
 import React, { useRef } from 'react'
 const scrollToRef = (ref) => window.scrollTo({top: ref.current.offsetTop, behavior: 'smooth'})   
 
-
 export default function Home({articles, newestArticle}) {
   const articlesRef=useRef(null)
   return (
@@ -14,7 +13,7 @@ export default function Home({articles, newestArticle}) {
       <Head>
         <title>The Curious Mind</title>
         <meta name="description" content="a youth-run journalism NGO dedicated to the pursuit of the student voice established in 2020" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://res.cloudinary.com/duta3135/image/upload/v1650616277/assets/favicon_vgrh3i.jpg" />
       </Head>
       <header>
         <h2>The Curious Mind</h2>
