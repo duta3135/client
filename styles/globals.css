@@ -11,7 +11,7 @@ body {
   --tcm-text-color: #252b30;
   --tcm-red: #f13d6a;
   --tcm-red-hover: #fb5f86;
-  --tcm-navbar: #e8d288;
+  --tcm-navbar: hsl(56, 100%, 50%);
   --tcm-neutral: hsl(0, 0%, 100%);
   --tcm-blue: #69bef1;
   --tcm-blue-hover: #81c9f7;
