@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from '../styles/ArticleCard.module.css'
 export default function ArticleCard({props}) {
-    const {_id, category, title, description, writers, content, cover, published} = props
+    const {slug, title, description, writers, cover} = props
     
         return (
             <div className={styles.container}>
-                <a href={`/articles/${_id}`}>
+                <a href={`/articles/${slug.current}`}>
                     <img src={cover}/>
                 </a>
-                <a href={`/articles/${_id}`}>
+                <a href={`/articles/${slug.current}`}>
                     <div className={styles.text}>
                         <h3>{title}</h3>
                         <p>{description}</p>

@@ -18,26 +18,31 @@ export default {
       },
     },
     {
-      name: 'image',
-      title: 'Image',
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+      options: {
+        maxLength: 100
+      }
+    },
+        {
+      name: 'authors',
+      title: 'Authors',
+      type: 'array',
+      of:[{
+          type: 'reference',
+          to:[{type: 'author'}]
+        }]
+      ,
+    },
+    {
+      name: 'cover',
+      title: 'Cover',
       type: 'image',
       options: {
         hotspot: true,
-      },
+      validation: Rule=>Rule.required()
     },
-    {
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'author'},
-    },
-    {
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
     },
     {
       name: 'categories',

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import axios from 'axios'
+import { createClient } from 'next-sanity'
 import ArticleCard from '../components/ArticleCard'
 import Link from 'next/link'
 import React, { useRef } from 'react'
@@ -22,12 +22,12 @@ export default function Home({articles, newestArticle}) {
       <main className={styles.main}>
         <section className={styles.hero}>
           {newestArticle?
-          <Link href={`/articles/${newestArticle[0]._id}`}>
+          <Link href={`/articles/${newestArticle.slug.current}`}>
             <div className={styles.newestArticle}>
-              <img src={newestArticle[0].cover}/>
-              <h3>{newestArticle[0].title}</h3>
-              <p>{newestArticle[0].description}</p>
-              <p>written by {newestArticle[0].writers.map((writer, index)=><a href={writer.insta}>{newestArticle[0].writers.length-1===index?writer.name:`${writer.name}, `}</a>)}</p>
+              <img src={newestArticle.cover}/>
+              <h3>{newestArticle.title}</h3>
+              <p>{newestArticle.description}{}</p>
+              <p>written by {newestArticle.writers.map((writer, index)=><Link href={writer.slug.current}>{newestArticle.writers.length-1===index?writer.name:`${writer.name}, `}</Link>)}</p>
             </div>
           </Link>:null}
           <div className={styles.heroText}>
@@ -50,13 +50,31 @@ export default function Home({articles, newestArticle}) {
     </div>
   )
 }
+
+const client = createClient({
+  projectId:"5dg3ygus",
+  dataset: "production",
+  useCdn: false
+})
 export async function getStaticProps(){
-  const articles = await axios.get(`${process.env.API_URL}/articles?published=true&limit=4`)
-  const newestArticle= await axios.get(`${process.env.API_URL}/articles?published=true&limit=1`)
+  const articles = await client.fetch(`*[_type=="post"]{
+    title,
+    slug,
+    description,
+    "writers": authors[]->{name, slug},
+    "cover": cover.asset->url
+  }`)
+  const newestArticle= await client.fetch(`*[_type=="post"] | order(_createdAt desc)[0]{
+    title,
+    slug,
+    description,
+    "writers": authors[]->{name, slug},
+    "cover": cover.asset->url
+  }`)
   return{
     props:{
-      articles: articles.data,
-      newestArticle: newestArticle.data
+      articles,
+      newestArticle
     },revalidate: 3600
   }
 }
